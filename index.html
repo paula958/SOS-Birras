@@ -1,1 +1,758 @@
+<!DOCTYPE html>
 
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOS Birras</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E8341A; --navy: #1A1F3C; --gold: #F5A623;
+    --green: #2D9E6B; --purple: #6B4EFF; --pink: #E8348A;
+    --soft: #F4F4F8; --white: #FDFCFB;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--soft); color: #2C2C2C; }
+  .screen { display: none; }
+  #screen-home { display: block; }
+
+/* APP HEADER */
+.app-header {
+background: linear-gradient(145deg, #1A1F3C 0%, #2D1B69 100%);
+padding: 48px 24px 28px;
+text-align: center;
+position: relative;
+}
+.app-status-bar {
+position: absolute; top: 14px; left: 0; right: 0;
+display: flex; justify-content: space-between;
+padding: 0 20px; font-size: 11px;
+color: rgba(255,255,255,0.45); font-weight: 500;
+}
+.sos-icon {
+width: 72px; height: 72px; background: var(–red);
+border-radius: 18px; display: flex; align-items: center;
+justify-content: center; font-family: ‘Fraunces’, serif;
+font-weight: 900; font-size: 22px; color: white;
+letter-spacing: 1px; margin: 0 auto 14px;
+box-shadow: 0 8px 28px rgba(232,52,26,0.5);
+}
+.app-header h1 { font-family: ‘Fraunces’, serif; font-weight: 900; font-size: 26px; color: white; margin-bottom: 6px; }
+.app-header p { color: rgba(255,255,255,0.6); font-size: 13px; max-width: 260px; margin: 0 auto; }
+
+/* MENU */
+.menu-label {
+font-size: 11px; font-weight: 700; letter-spacing: 2px;
+text-transform: uppercase; color: #aaa; padding: 18px 16px 10px;
+}
+.menu-list { padding: 0 12px 8px; display: flex; flex-direction: column; gap: 8px; }
+.menu-btn {
+background: white; border: none; border-radius: 16px;
+padding: 15px 16px; display: flex; align-items: center;
+gap: 13px; cursor: pointer; text-align: left; width: 100%;
+box-shadow: 0 2px 10px rgba(26,31,60,0.07);
+transition: transform 0.15s;
+}
+.menu-btn:active { transform: scale(0.97); }
+.menu-icon {
+width: 44px; height: 44px; border-radius: 12px;
+display: flex; align-items: center; justify-content: center;
+font-size: 21px; flex-shrink: 0;
+}
+.ic-red{background:#FFF0ED} .ic-gold{background:#FFF8EC}
+.ic-green{background:#F0FAF5} .ic-blue{background:#EEF0FA}
+.ic-purple{background:#F5F0FF} .ic-teal{background:#E8F8F8}
+.ic-pink{background:#FEF0F6} .ic-navy{background:#EEEEF5}
+.menu-text { flex: 1; }
+.menu-title { font-size: 15px; font-weight: 600; color: var(–navy); margin-bottom: 2px; }
+.menu-sub { font-size: 12px; color: #999; }
+.menu-arrow { color: #CCC; font-size: 18px; flex-shrink: 0; }
+.menu-divider { height: 1px; background: #EBEBF0; margin: 6px 12px; }
+.pb { padding-bottom: 90px; }
+
+/* INNER HEADER */
+.inner-header { padding: 52px 20px 22px; position: relative; }
+.inner-header.red { background: linear-gradient(135deg,#E8341A,#B82A14); }
+.inner-header.gold { background: linear-gradient(135deg,#F5A623,#D4881A); }
+.inner-header.green { background: linear-gradient(135deg,#2D9E6B,#1A7A50); }
+.inner-header.blue { background: linear-gradient(135deg,#4E6BFF,#2D4ECC); }
+.inner-header.purple { background: linear-gradient(135deg,#6B4EFF,#4E2DCC); }
+.inner-header.navy { background: linear-gradient(135deg,#1A1F3C,#2D1B69); }
+.inner-header.teal { background: linear-gradient(135deg,#1A9E9E,#0E7A7A); }
+.inner-header.pink { background: linear-gradient(135deg,#E8348A,#B82A6E); }
+.back-btn {
+position: absolute; top: 14px; left: 16px;
+background: rgba(255,255,255,0.2); border: none; color: white;
+font-size: 14px; font-weight: 600; padding: 8px 14px;
+border-radius: 20px; cursor: pointer;
+}
+.inner-header .sec-icon { font-size: 34px; margin-bottom: 8px; }
+.inner-header h2 { font-family:‘Fraunces’,serif; font-weight:900; font-size:23px; color:white; line-height:1.2; margin-bottom:5px; }
+.inner-header p { font-size:13px; color:rgba(255,255,255,0.75); }
+
+/* CONTENT */
+.inner-body { padding: 14px; }
+.card { background: white; border-radius: 16px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 12px rgba(26,31,60,0.07); }
+.card h3 { font-family:‘Fraunces’,serif; font-weight:700; font-size:16px; color:var(–navy); margin-bottom:10px; }
+.card p { font-size:14px; color:#555; margin-bottom:8px; }
+.card p:last-child { margin-bottom:0; }
+
+.step-list { list-style:none; counter-reset:steps; }
+.step-list li {
+counter-increment:steps; display:flex; gap:11px;
+margin-bottom:11px; font-size:14px; align-items:flex-start; color:#444;
+}
+.step-list li::before {
+content:counter(steps); background:var(–red); color:white;
+font-weight:700; font-size:11px; min-width:22px; height:22px;
+border-radius:50%; display:flex; align-items:center;
+justify-content:center; margin-top:1px; flex-shrink:0;
+}
+
+.fok { background:#F0FAF5; border-left:3px solid var(–green); border-radius:8px; padding:10px 14px; font-size:14px; margin-bottom:8px; color:#333; }
+.fok::before { content:’✅ ’; }
+.fno { background:#FFF0ED; border-left:3px solid var(–red); border-radius:8px; padding:10px 14px; font-size:14px; margin-bottom:8px; color:#333; }
+.fno::before { content:’❌ ’; }
+.frase-pill {
+background:white; border-radius:13px; padding:14px 16px;
+margin-bottom:9px; font-size:14px; font-weight:500; color:var(–navy);
+display:flex; align-items:center; gap:11px;
+box-shadow:0 2px 10px rgba(26,31,60,0.07); cursor:pointer;
+position:relative; transition:transform 0.15s;
+}
+.frase-pill:active{transform:scale(0.97)}
+.frase-pill .pill-icon{font-size:20px;flex-shrink:0}
+.frase-pill .copy-hint{position:absolute;right:14px;font-size:11px;color:#bbb}
+.frase-pill.gn{border-left:4px solid var(–green)}
+.frase-pill.gd{border-left:4px solid var(–gold)}
+.frase-pill.nv{border-left:4px solid var(–navy)}
+.frase-pill.pp{border-left:4px solid var(–purple)}
+.frase-pill.pk{border-left:4px solid var(–pink)}
+
+.highlight {
+background:linear-gradient(135deg,#FFF8EC,#FFF0ED);
+border-radius:14px; padding:16px; margin-bottom:12px;
+border:1px solid rgba(245,166,35,0.2);
+}
+.highlight p { font-size:14px; color:#444; margin:0; }
+.highlight strong { color:var(–navy); }
+
+.mantra {
+background:linear-gradient(135deg,var(–navy),#2D1B69);
+border-radius:16px; padding:22px 20px; text-align:center; margin-bottom:12px;
+}
+.mantra p { font-family:‘Fraunces’,serif; font-style:italic; font-size:17px; color:white; line-height:1.5; }
+.mantra span { color:var(–gold); }
+
+.lembre {
+background:linear-gradient(135deg,#FEF0F6,#FFF0ED);
+border:1px solid rgba(232,52,138,0.15);
+border-radius:14px; padding:18px; margin-bottom:12px; text-align:center;
+}
+.lembre .l-emoji{font-size:32px;margin-bottom:8px}
+.lembre p{font-size:15px;color:#333;line-height:1.5;margin:0}
+.lembre strong{color:var(–pink)}
+
+/* CALM */
+.calm-item { background:white; border-radius:14px; padding:16px; margin-bottom:10px; box-shadow:0 2px 10px rgba(26,31,60,0.07); display:flex; gap:13px; align-items:flex-start; }
+.calm-letter { font-family:‘Fraunces’,serif; font-weight:900; font-size:38px; line-height:1; min-width:42px; }
+.calm-letter.c{color:var(–red)} .calm-letter.a{color:var(–gold)}
+.calm-letter.l{color:var(–green)} .calm-letter.m{color:var(–purple)}
+.calm-item h4{font-weight:700;font-size:15px;color:var(–navy);margin-bottom:4px}
+.calm-item p{font-size:13px;color:#666;margin:0}
+
+/* RESPIRAÇÃO */
+.breath-card { background:white; border-radius:16px; padding:20px; margin-bottom:10px; box-shadow:0 2px 10px rgba(26,31,60,0.07); text-align:center; }
+.breath-emoji{font-size:38px;margin-bottom:10px}
+.breath-card h4{font-family:‘Fraunces’,serif;font-weight:700;color:var(–navy);margin-bottom:8px}
+.breath-card p{font-size:14px;color:#666}
+
+/* CHECKLIST */
+.check-item { display:flex; align-items:center; gap:13px; padding:13px 0; border-bottom:1px solid #F0F0F5; cursor:pointer; }
+.check-item:last-child{border-bottom:none}
+.chk { width:24px;height:24px;border:2px solid #DDD;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-size:14px;color:white; }
+.chk.done{background:var(–green);border-color:var(–green)}
+.check-item span{font-size:15px;color:#333}
+.check-item span.done{text-decoration:line-through;color:#bbb}
+
+/* SECTION TAG */
+.sec-tag { font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:8px;display:inline-block;margin-bottom:8px; }
+.tag-red{background:#FFF0ED;color:var(–red)}
+.tag-gold{background:#FFF8EC;color:#B87A10}
+.tag-green{background:#F0FAF5;color:var(–green)}
+.tag-pink{background:#FEF0F6;color:var(–pink)}
+
+/* BOTTOM NAV */
+.bottom-nav {
+position:fixed;bottom:0;left:0;right:0;background:white;
+border-top:1px solid #EBEBF0;padding:10px 0 20px;
+display:flex;justify-content:space-around;z-index:100;
+}
+.nav-item { display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border-radius:12px;border:none;background:none; }
+.nav-item.active .nav-icon{color:var(–red)}
+.nav-item.active .nav-label{color:var(–red);font-weight:600}
+.nav-icon{font-size:21px;color:#BCC}
+.nav-label{font-size:10px;color:#aaa}
+
+/* TOAST */
+.toast { position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(60px);background:var(–navy);color:white;padding:10px 22px;border-radius:30px;font-size:13px;font-weight:500;z-index:999;transition:transform 0.3s;white-space:nowrap;opacity:0; }
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+
+</head>
+<body>
+
+<!-- ===== HOME ===== -->
+
+<div id="screen-home">
+  <div class="app-header">
+    <div class="app-status-bar"><span>SOS Birras</span><span>Paula Roberta Amorim</span></div>
+    <div class="sos-icon">SOS</div>
+    <h1>SOS Birras</h1>
+    <p>Toque na situação que você está vivendo agora</p>
+  </div>
+
+  <div class="menu-label">🆘 O que está acontecendo agora?</div>
+  <div class="menu-list">
+    <button class="menu-btn" onclick="show('super')">
+      <div class="menu-icon ic-red">🛒</div>
+      <div class="menu-text"><div class="menu-title">Birra no Supermercado</div><div class="menu-sub">Quer doce, brinquedo, não quer sair…</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('shopping')">
+      <div class="menu-icon ic-gold">🛍</div>
+      <div class="menu-text"><div class="menu-title">Birra no Shopping</div><div class="menu-sub">Sobrecarga, não quer ir embora…</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('vovo')">
+      <div class="menu-icon ic-green">👵</div>
+      <div class="menu-text"><div class="menu-title">Birra na Casa da Vovó</div><div class="menu-sub">Família interferindo, pressão…</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('foradecasa')">
+      <div class="menu-icon ic-gold">🌍</div>
+      <div class="menu-text"><div class="menu-title">Fora de Casa</div><div class="menu-sub">Visitas, passeios e viagens</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('medico')">
+      <div class="menu-icon ic-blue">🏥</div>
+      <div class="menu-text"><div class="menu-title">Birra no Consultório</div><div class="menu-sub">Medo, agitação, impossível sair…</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('restaurante')">
+      <div class="menu-icon ic-purple">🍽</div>
+      <div class="menu-text"><div class="menu-title">Birra no Restaurante</div><div class="menu-sub">Não quer ficar sentado, espera longa…</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('transporte')">
+      <div class="menu-icon ic-teal">🚌</div>
+      <div class="menu-text"><div class="menu-title">Birra no Transporte</div><div class="menu-sub">Ônibus, metrô, espaço limitado…</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+  </div>
+
+  <div class="menu-divider"></div>
+  <div class="menu-label">💬 Ferramentas e apoio</div>
+  <div class="menu-list pb">
+    <button class="menu-btn" onclick="show('frases')">
+      <div class="menu-icon ic-pink">💬</div>
+      <div class="menu-text"><div class="menu-title">Frases Salva-Vidas</div><div class="menu-sub">O que dizer quando a cabeça trava</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('depois')">
+      <div class="menu-icon ic-red">❤️</div>
+      <div class="menu-text"><div class="menu-title">Depois da Birra</div><div class="menu-sub">O que fazer quando a tempestade passa</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('calm')">
+      <div class="menu-icon ic-navy">🧠</div>
+      <div class="menu-text"><div class="menu-title">Método CALM</div><div class="menu-sub">4 passos para qualquer situação</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('respiracao')">
+      <div class="menu-icon ic-blue">🫁</div>
+      <div class="menu-text"><div class="menu-title">Técnicas de Respiração</div><div class="menu-sub">Acalme em segundos — juntas</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('checklist')">
+      <div class="menu-icon ic-green">✅</div>
+      <div class="menu-text"><div class="menu-title">Checklist Antes de Sair</div><div class="menu-sub">Previna antes de acontecer</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+    <button class="menu-btn" onclick="show('olhares')">
+      <div class="menu-icon ic-gold">💪</div>
+      <div class="menu-text"><div class="menu-title">Lidando com Julgamentos</div><div class="menu-sub">Os olhares não definem você</div></div>
+      <span class="menu-arrow">›</span>
+    </button>
+  </div>
+</div>
+
+<!-- ===== SUPERMERCADO ===== -->
+
+<div id="screen-super" class="screen">
+  <div class="inner-header red">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">🛒</div>
+    <h2>Birra no Supermercado</h2>
+    <p>Ação imediata — próximos 60 segundos</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="card"><h3>🆘 Ação imediata</h3>
+      <ol class="step-list">
+        <li>Pare o carrinho imediatamente</li>
+        <li>Abaixe-se na altura da criança</li>
+        <li>"Eu vejo que você quer muito esse doce"</li>
+        <li>"É difícil quando não podemos ter o que queremos"</li>
+        <li>"Vamos escolher uma fruta ou terminar rápido?"</li>
+      </ol>
+    </div>
+    <div class="card"><h3>✅ Frases que funcionam</h3>
+      <div class="fok">"Eu entendo que você queira isso"</div>
+      <div class="fok">"Vamos colocar na lista para outro dia"</div>
+      <div class="fok">"Qual dessas frutas você quer experimentar?"</div>
+    </div>
+    <div class="card"><h3>❌ Evite completamente</h3>
+      <div class="fno">"Para de fazer birra"</div>
+      <div class="fno">"Você está fazendo feio"</div>
+      <div class="fno">"Todo mundo está olhando"</div>
+    </div>
+    <div class="highlight"><p><strong>Se a birra escalou:</strong> Saia do corredor, vá para local menos movimentado, respire fundo e ignore os olhares.</p></div>
+  </div>
+</div>
+
+<!-- ===== SHOPPING ===== -->
+
+<div id="screen-shopping" class="screen">
+  <div class="inner-header gold">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">🛍</div>
+    <h2>Birra no Shopping</h2>
+    <p>Muito estímulo, muitas tentações</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="card"><h3>🆘 Plano de emergência</h3>
+      <ol class="step-list">
+        <li>Encontre local reservado — banco ou área de descanso</li>
+        <li>Sente-se no nível da criança</li>
+        <li>"Vamos parar um pouquinho e respirar"</li>
+        <li>Ofereça água — desidratação piora tudo</li>
+        <li>"Vamos contar quantas pessoas de vermelho passam"</li>
+      </ol>
+    </div>
+    <div class="card"><h3>🎮 Não quer sair da área de jogos</h3>
+      <div class="fok">"Vou contar até 5 para você se despedir"</div>
+      <div class="fok">"Quer dar tchau acenando ou mandando beijinho?"</div>
+    </div>
+    <div class="card"><h3>🍭 Quer tudo na loja de doces</h3>
+      <div class="fok">"Que cores lindas! Vamos só olhar com os olhos hoje"</div>
+      <div class="fok">"Vamos fotografar para lembrar depois"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VOVÓ ===== -->
+
+<div id="screen-vovo" class="screen">
+  <div class="inner-header green">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">👵</div>
+    <h2>Birra na Casa da Vovó</h2>
+    <p>Pressão da família + regras diferentes</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="card"><h3>🆘 Estratégia</h3>
+      <ol class="step-list">
+        <li>"Obrigada, mas eu resolvo"</li>
+        <li>Leve para outro cômodo — longe da audiência</li>
+        <li>Use o método CALM</li>
+        <li>Converse com familiares em particular depois</li>
+      </ol>
+    </div>
+    <div class="card"><h3>Para os familiares</h3>
+      <div class="fok">"Obrigada pela preocupação, mas eu preciso lidar do meu jeito"</div>
+      <div class="fok">"Estamos aprendendo uma nova forma de educar"</div>
+      <div class="fok">"Ela precisa de um momento para se acalmar"</div>
+    </div>
+    <div class="highlight"><p><strong>Lembre-se:</strong> Você não precisa justificar sua abordagem para ninguém. Sua autoridade como mãe é suficiente.</p></div>
+  </div>
+</div>
+
+<!-- ===== FORA DE CASA ===== -->
+
+<div id="screen-foradecasa" class="screen">
+  <div class="inner-header gold">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">🌍</div>
+    <h2>Fora de Casa</h2>
+    <p>Visitas, passeios e viagens</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="lembre">
+      <div class="l-emoji">❤️</div>
+      <p>Respira. <strong>Mudanças de ambiente mexem muito com a criança.</strong></p>
+    </div>
+    <div class="card"><h3>🔴 O que fazer AGORA</h3>
+      <ol class="step-list">
+        <li>Afaste a criança da situação (se possível)</li>
+        <li>Diminua os estímulos ao redor</li>
+        <li>Abaixe na altura dela</li>
+        <li>Fale com calma e segurança</li>
+        <li>Conecte antes de corrigir</li>
+      </ol>
+    </div>
+    <div class="card"><h3>💬 O que dizer</h3>
+      <div class="fok">"Eu vejo que isso foi difícil para você"</div>
+      <div class="fok">"Você está se sentindo desconfortável?"</div>
+      <div class="fok">"Eu estou aqui com você"</div>
+      <div class="fok">"Vamos resolver isso juntas?"</div>
+      <div class="fok">"Vamos dar uma pausinha?"</div>
+    </div>
+    <div class="card"><h3>⚠️ Situações comuns</h3>
+      <div class="sec-tag tag-gold">👉 Visitas / casa de outras pessoas</div>
+      <p style="font-size:14px;color:#555;margin-bottom:12px">Muita gente, regras diferentes, excesso de estímulo.</p>
+      <div class="sec-tag tag-gold">👉 Passeios / lugares novos</div>
+      <p style="font-size:14px;color:#555;margin-bottom:12px">Novidade demais, cansaço, mudança de rotina.</p>
+      <div class="sec-tag tag-gold">👉 Viagens</div>
+      <p style="font-size:14px;color:#555">Sono desregulado, fome, excesso de estímulos.</p>
+    </div>
+    <div class="lembre">
+      <div class="l-emoji">❤️</div>
+      <p>Seu filho não está sendo "difícil".<br><strong>Ele está fora do ambiente seguro dele.</strong><br>E você é esse porto seguro.</p>
+    </div>
+    <div class="card"><h3>🌱 Para a próxima vez</h3>
+      <div class="fok">Prepare a criança antes de sair</div>
+      <div class="fok">Explique o que vai acontecer</div>
+      <div class="fok">Leve algo familiar (brinquedo, objeto)</div>
+      <div class="fok">Respeite limites de cansaço</div>
+      <div class="fok">Planeje pausas</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MÉDICO ===== -->
+
+<div id="screen-medico" class="screen">
+  <div class="inner-header blue">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">🏥</div>
+    <h2>Birra no Consultório</h2>
+    <p>Medo, ansiedade, impossível sair</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="card"><h3>🆘 Kit sobrevivência</h3>
+      <ol class="step-list">
+        <li>Explique antes o que vai acontecer</li>
+        <li>Leve objeto de conforto — naninha, brinquedo favorito</li>
+        <li>"Vamos respirar como um balão"</li>
+        <li>Negocie com o profissional — peça alguns minutos</li>
+      </ol>
+    </div>
+    <div class="card"><h3>💉 Medo de injeção</h3>
+      <div class="fok">"Você é corajoso. Vou ficar aqui do seu lado"</div>
+      <div class="fok">"Vamos contar até 3 juntos"</div>
+      <div class="fok">"Tudo bem chorar, é completamente normal"</div>
+    </div>
+    <div class="card"><h3>🏥 Sala de espera</h3>
+      <div class="fok">"Vamos brincar de estátua por 2 minutos"</div>
+      <div class="fok">"Que cores você vê naquela parede?"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RESTAURANTE ===== -->
+
+<div id="screen-restaurante" class="screen">
+  <div class="inner-header purple">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">🍽</div>
+    <h2>Birra no Restaurante</h2>
+    <p>Espera longa, ficar sentado, outros clientes</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="card"><h3>🆘 Plano de ação</h3>
+      <ol class="step-list">
+        <li>Saia da mesa — vá ao banheiro ou área externa</li>
+        <li>"Vamos dar uma voltinha para respirar"</li>
+        <li>Peça ao garçom o prato da criança primeiro</li>
+        <li>Troque de lugar ou assento</li>
+      </ol>
+    </div>
+    <div class="card"><h3>📱 Kit de emergência para a mesa</h3>
+      <p>Leve sempre: livro de adesivos, lápis de cor, papel para desenhar, brinquedinho silencioso.</p>
+    </div>
+    <div class="card"><h3>Jogos silenciosos</h3>
+      <div class="fok">"Vamos contar quantas pessoas têm cabelo escuro"</div>
+      <div class="fok">"Que sons você consegue ouvir agora?"</div>
+      <div class="fok">"Desenhe como você acha que vai ser a comida"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TRANSPORTE ===== -->
+
+<div id="screen-transporte" class="screen">
+  <div class="inner-header teal">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">🚌</div>
+    <h2>Birra no Transporte</h2>
+    <p>Espaço limitado, não pode sair</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="card"><h3>🆘 Estratégia</h3>
+      <ol class="step-list">
+        <li>Mantenha-se ultra calma — sua ansiedade amplifica tudo</li>
+        <li>Use voz muito baixa — força a atenção dela</li>
+        <li>"Vem cá, vou te contar um segredo" — técnica do cochichinho</li>
+        <li>"Olha que carro bonito lá fora" — distração pelo ambiente</li>
+      </ol>
+    </div>
+    <div class="card"><h3>🚌 No ônibus</h3>
+      <div class="fok">"Vamos ver quem consegue ficar mais quietinho"</div>
+      <div class="fok">"Conte comigo quantos carros azuis passam"</div>
+    </div>
+    <div class="card"><h3>🚇 No metrô</h3>
+      <div class="fok">"Quantas estações faltam? Vamos contar juntos"</div>
+      <div class="fok">"Olha que túnel escuro! Vamos atravessar juntos"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FRASES SALVA-VIDAS ===== -->
+
+<div id="screen-frases" class="screen">
+  <div class="inner-header pink">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">💬</div>
+    <h2>Frases Salva-Vidas</h2>
+    <p>Toque para copiar — use na hora H</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="lembre">
+      <div class="l-emoji">❤️</div>
+      <p>Respira. <strong>Você não precisa ter a resposta perfeita.</strong> Só precisa estar presente.</p>
+    </div>
+
+```
+<div class="sec-tag tag-green" style="margin-bottom:8px">🧠 Para acalmar</div>
+<div class="frase-pill gn" onclick="copiar(this,'Eu estou aqui com você')"><span class="pill-icon">🤗</span>"Eu estou aqui com você"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill gn" onclick="copiar(this,'Vamos passar por isso juntas')"><span class="pill-icon">🤗</span>"Vamos passar por isso juntas"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill gn" onclick="copiar(this,'Respira comigo')"><span class="pill-icon">🤗</span>"Respira comigo"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill gn" onclick="copiar(this,'Você não está sozinho')"><span class="pill-icon">🤗</span>"Você não está sozinho"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill gn" onclick="copiar(this,'Eu vou te ajudar')"><span class="pill-icon">🤗</span>"Eu vou te ajudar"<span class="copy-hint">copiar</span></div>
+
+<div class="sec-tag tag-gold" style="margin:14px 0 8px">💛 Para validar emoções</div>
+<div class="frase-pill gd" onclick="copiar(this,'Eu vejo que você está muito bravo')"><span class="pill-icon">💛</span>"Eu vejo que você está muito bravo"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill gd" onclick="copiar(this,'Isso foi difícil para você, né?')"><span class="pill-icon">💛</span>"Isso foi difícil para você, né?"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill gd" onclick="copiar(this,'É difícil quando não podemos ter o que queremos')"><span class="pill-icon">💛</span>"É difícil quando não podemos ter o que queremos"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill gd" onclick="copiar(this,'Seus sentimentos são importantes')"><span class="pill-icon">💛</span>"Seus sentimentos são importantes"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill gd" onclick="copiar(this,'Eu entendo você')"><span class="pill-icon">💛</span>"Eu entendo você"<span class="copy-hint">copiar</span></div>
+
+<div class="sec-tag tag-red" style="margin:14px 0 8px">🎯 Para redirecionar</div>
+<div class="frase-pill nv" onclick="copiar(this,'Vamos resolver isso juntas?')"><span class="pill-icon">🎯</span>"Vamos resolver isso juntas?"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill nv" onclick="copiar(this,'Você pode escolher: A ou B?')"><span class="pill-icon">🎯</span>"Você pode escolher: A ou B?"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill nv" onclick="copiar(this,'Vamos tentar de outro jeito?')"><span class="pill-icon">🎯</span>"Vamos tentar de outro jeito?"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill nv" onclick="copiar(this,'Que tal fazermos uma pausa?')"><span class="pill-icon">🎯</span>"Que tal fazermos uma pausa?"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill nv" onclick="copiar(this,'Vamos pensar juntas em uma solução?')"><span class="pill-icon">🎯</span>"Vamos pensar juntas em uma solução?"<span class="copy-hint">copiar</span></div>
+
+<div class="sec-tag" style="margin:14px 0 8px;background:#FFF8EC;color:#B87A10">⚠️ Para colocar limites (sem gritar)</div>
+<div class="frase-pill pp" onclick="copiar(this,'Eu entendo que você está bravo, mas não vamos gritar')"><span class="pill-icon">⚠️</span>"Eu entendo que você está bravo, mas não vamos gritar"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill pp" onclick="copiar(this,'Você pode estar chateado, mas não pode bater')"><span class="pill-icon">⚠️</span>"Você pode estar chateado, mas não pode bater"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill pp" onclick="copiar(this,'Eu estou aqui para te ajudar a se acalmar')"><span class="pill-icon">⚠️</span>"Eu estou aqui para te ajudar a se acalmar"<span class="copy-hint">copiar</span></div>
+<div class="frase-pill pp" onclick="copiar(this,'Vamos encontrar outra forma de fazer isso')"><span class="pill-icon">⚠️</span>"Vamos encontrar outra forma de fazer isso"<span class="copy-hint">copiar</span></div>
+
+<div class="card" style="margin-top:6px"><h3>❌ Evite dizer</h3>
+  <div class="fno">"Para de fazer birra"</div>
+  <div class="fno">"Você está fazendo feio"</div>
+  <div class="fno">"Todo mundo está olhando"</div>
+  <div class="fno">"Não é nada demais"</div>
+  <div class="fno">"Você está exagerando"</div>
+</div>
+
+<div class="lembre">
+  <div class="l-emoji">❤️</div>
+  <p>Você não precisa controlar tudo.<br><strong>Você só precisa se conectar.</strong></p>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ===== DEPOIS DA BIRRA ===== -->
+
+<div id="screen-depois" class="screen">
+  <div class="inner-header pink">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">❤️</div>
+    <h2>Depois da Birra</h2>
+    <p>Quando a tempestade passa</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="lembre">
+      <div class="l-emoji">❤️</div>
+      <p>Respira. <strong>Vocês conseguiram passar por isso.</strong></p>
+    </div>
+    <div class="card"><h3>🤗 O que fazer AGORA</h3>
+      <ol class="step-list">
+        <li>Se reconecte com seu filho</li>
+        <li>Ofereça carinho (mesmo depois da birra)</li>
+        <li>Não brigue nem puna nesse momento</li>
+        <li>Volte ao normal com leveza</li>
+        <li>Mostre que está tudo bem</li>
+      </ol>
+    </div>
+    <div class="card"><h3>💬 O que dizer</h3>
+      <div class="fok">"Que bom que você se acalmou"</div>
+      <div class="fok">"Foi difícil, né?"</div>
+      <div class="fok">"Eu estou com você"</div>
+      <div class="fok">"Nós conseguimos passar por isso juntas"</div>
+      <div class="fok">"Todo mundo tem dias difíceis"</div>
+    </div>
+    <div class="card"><h3>🧠 Para crianças maiores (já calmas)</h3>
+      <div class="fok">"O que você estava sentindo?"</div>
+      <div class="fok">"O que podemos fazer diferente na próxima vez?"</div>
+      <div class="fok">"Como posso te ajudar quando você ficar assim?"</div>
+    </div>
+    <div class="lembre">
+      <div class="l-emoji">❤️</div>
+      <p>Seu filho não fez isso para te desafiar.<br><strong>Ele estava tentando lidar com algo que ainda não sabe controlar.</strong></p>
+    </div>
+    <div class="card"><h3>🌱 Para você</h3>
+      <div class="fok">Não se culpe</div>
+      <div class="fok">Você está aprendendo também</div>
+      <div class="fok">Cada situação é uma oportunidade</div>
+      <div class="fok">Você está fazendo o melhor que pode</div>
+    </div>
+    <div class="mantra">
+      <p>"Talvez não tenha sido perfeito...<br><span>mas foi com amor."</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CALM ===== -->
+
+<div id="screen-calm" class="screen">
+  <div class="inner-header navy">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">🧠</div>
+    <h2>Método CALM</h2>
+    <p>4 passos para qualquer birra pública</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="calm-item"><div class="calm-letter c">C</div><div><h4>CONECTE-SE</h4><p>Abaixe-se na altura dele. Contato visual. Tom calmo e baixo. "Eu vejo que você está muito bravo."</p></div></div>
+    <div class="calm-item"><div class="calm-letter a">A</div><div><h4>ACOLHA</h4><p>Valide a emoção sem validar o comportamento. Nunca diga "Não é para tanto" ou "Para de drama".</p></div></div>
+    <div class="calm-item"><div class="calm-letter l">L</div><div><h4>LIMITE</h4><p>Firme e gentil. "Entendo que você está chateado, mas não vamos gritar aqui."</p></div></div>
+    <div class="calm-item"><div class="calm-letter m">M</div><div><h4>MOVA-SE</h4><p>Redirecione para solução ou mude o ambiente. Sempre ofereça escolha: "A ou B?"</p></div></div>
+    <div class="mantra"><p>"Eu estou ensinando meu filho a lidar com emoções de forma saudável.<br><span>Isso é amor em ação.</span>"</p></div>
+  </div>
+</div>
+
+<!-- ===== RESPIRAÇÃO ===== -->
+
+<div id="screen-respiracao" class="screen">
+  <div class="inner-header blue">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">🫁</div>
+    <h2>Técnicas de Respiração</h2>
+    <p>Ative a calma em segundos — juntas</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="breath-card"><div class="breath-emoji">🎈</div><h4>Balão Mágico</h4><p>Inspire pelo nariz contando até 3 — "enche o balão". Expire pela boca contando até 5 — "esvazia o balão". Repita 3 a 5 vezes.</p></div>
+    <div class="breath-card"><div class="breath-emoji">🌸</div><h4>Flor e Vela</h4><p>"Vamos cheirar uma flor bem gostosa" (inspire). "Agora vamos assoprar uma velinha" (expire devagar). Faça os gestos juntas.</p></div>
+    <div class="breath-card"><div class="breath-emoji">🦋</div><h4>Borboleta</h4><p>Para crianças menores. Mãos no peito como asas. "As asinhas sobem quando respiramos, descem quando soltamos o ar."</p></div>
+  </div>
+</div>
+
+<!-- ===== CHECKLIST ===== -->
+
+<div id="screen-checklist" class="screen">
+  <div class="inner-header green">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">✅</div>
+    <h2>Checklist</h2>
+    <p>Toque para marcar cada item</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="card"><h3>Antes de sair de casa</h3>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>A criança comeu recentemente?</span></div>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Dormiu o suficiente?</span></div>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Kit de sobrevivência na bolsa?</span></div>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Expliquei aonde vamos e o que vamos fazer?</span></div>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Estou calma e preparada?</span></div>
+    </div>
+    <div class="card"><h3>Durante uma birra</h3>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Respirei fundo antes de agir?</span></div>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Me abaixei na altura da criança?</span></div>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Validei a emoção primeiro?</span></div>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Ofereci escolha ou redirecionei?</span></div>
+      <div class="check-item" onclick="chk(this)"><div class="chk">✓</div><span>Mantive voz calma e baixa?</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OLHARES ===== -->
+
+<div id="screen-olhares" class="screen">
+  <div class="inner-header gold">
+    <button class="back-btn" onclick="back()">‹ Voltar</button>
+    <div class="sec-icon">💪</div>
+    <h2>Lidando com Julgamentos</h2>
+    <p>Os olhares não definem você como mãe</p>
+  </div>
+  <div class="inner-body pb">
+    <div class="highlight"><p><strong>Verdade fundamental:</strong> Pessoas que julgam uma mãe lidando com uma birra provavelmente nunca tiveram filhos ou esqueceram como é desafiador.</p></div>
+    <div class="card"><h3>Estratégias mentais</h3>
+      <div class="fok">Foque na sua criança — ela precisa de você, não dos estranhos</div>
+      <div class="fok">Lembre-se: você está ensinando regulação emocional</div>
+      <div class="fok">Seja gentil consigo — você está fazendo o melhor que pode</div>
+    </div>
+    <div class="card"><h3>Respostas para comentários</h3>
+      <p style="font-size:13px;color:#888;margin-bottom:8px">"Na minha época era diferente"</p>
+      <div class="fok">"Cada geração aprende novas formas de educar"</div>
+      <p style="font-size:13px;color:#888;margin:10px 0 8px">"Você devia dar uns tapas"</p>
+      <div class="fok">"Cada família tem seu jeito" — e continue seu caminho</div>
+    </div>
+    <div class="mantra"><p>"Eu estou ensinando meu filho a lidar com emoções de forma saudável.<br><span>Isso é amor em ação.</span>"</p></div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+
+<div class="bottom-nav">
+  <button class="nav-item active" id="nav-home" onclick="show('home');setNav('home')"><span class="nav-icon">🆘</span><span class="nav-label">SOS</span></button>
+  <button class="nav-item" id="nav-frases" onclick="show('frases');setNav('frases')"><span class="nav-icon">💬</span><span class="nav-label">Frases</span></button>
+  <button class="nav-item" id="nav-depois" onclick="show('depois');setNav('depois')"><span class="nav-icon">❤️</span><span class="nav-label">Depois</span></button>
+  <button class="nav-item" id="nav-calm" onclick="show('calm');setNav('calm')"><span class="nav-icon">🧠</span><span class="nav-label">CALM</span></button>
+  <button class="nav-item" id="nav-checklist" onclick="show('checklist');setNav('checklist')"><span class="nav-icon">✅</span><span class="nav-label">Check</span></button>
+</div>
+
+<div class="toast" id="toast">✅ Frase copiada!</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('#screen-home,.screen').forEach(s=>s.style.display='none');
+  const el = document.getElementById('screen-'+id)||document.getElementById('screen-home');
+  if(el) el.style.display='block';
+  window.scrollTo(0,0);
+}
+function back() { show('home'); setNav('home'); }
+function setNav(id) {
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const nav=document.getElementById('nav-'+id);
+  if(nav) nav.classList.add('active');
+}
+function chk(item) {
+  item.querySelector('.chk').classList.toggle('done');
+  item.querySelector('span').classList.toggle('done');
+}
+function copiar(el, texto) {
+  if(navigator.clipboard) navigator.clipboard.writeText(texto);
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+document.getElementById('screen-home').style.display='block';
+</script>
+
+</body>
+</html>
