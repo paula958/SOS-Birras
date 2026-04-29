@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -17,194 +16,196 @@
   .screen { display: none; }
   #screen-home { display: block; }
 
-/* APP HEADER */
-.app-header {
-background: linear-gradient(145deg, #1A1F3C 0%, #2D1B69 100%);
-padding: 48px 24px 28px;
-text-align: center;
-position: relative;
-}
-.app-status-bar {
-position: absolute; top: 14px; left: 0; right: 0;
-display: flex; justify-content: space-between;
-padding: 0 20px; font-size: 11px;
-color: rgba(255,255,255,0.45); font-weight: 500;
-}
-.sos-icon {
-width: 72px; height: 72px; background: var(–red);
-border-radius: 18px; display: flex; align-items: center;
-justify-content: center; font-family: ‘Fraunces’, serif;
-font-weight: 900; font-size: 22px; color: white;
-letter-spacing: 1px; margin: 0 auto 14px;
-box-shadow: 0 8px 28px rgba(232,52,26,0.5);
-}
-.app-header h1 { font-family: ‘Fraunces’, serif; font-weight: 900; font-size: 26px; color: white; margin-bottom: 6px; }
-.app-header p { color: rgba(255,255,255,0.6); font-size: 13px; max-width: 260px; margin: 0 auto; }
+  /* APP HEADER */
+  .app-header {
+    background: linear-gradient(145deg, #1A1F3C 0%, #2D1B69 100%);
+    padding: 48px 24px 28px;
+    text-align: center;
+    position: relative;
+  }
+  .app-status-bar {
+    position: absolute; top: 14px; left: 0; right: 0;
+    display: flex; justify-content: space-between;
+    padding: 0 20px; font-size: 11px;
+    color: rgba(255,255,255,0.45); font-weight: 500;
+  }
+  .sos-icon {
+    width: 72px; height: 72px; background: #E8341A;
+    border-radius: 18px; display: flex; align-items: center;
+    justify-content: center; font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: 22px; color: white;
+    letter-spacing: 1px; margin: 0 auto 14px;
+    box-shadow: 0 8px 32px rgba(232,52,26,0.8), 0 0 0 4px rgba(232,52,26,0.3);
+  }
+  .app-header h1 { font-family: 'Fraunces', serif; font-weight: 900; font-size: 26px; color: white; margin-bottom: 6px; }
+  .app-header p { color: rgba(255,255,255,0.6); font-size: 13px; max-width: 260px; margin: 0 auto; }
 
-/* MENU */
-.menu-label {
-font-size: 11px; font-weight: 700; letter-spacing: 2px;
-text-transform: uppercase; color: #aaa; padding: 18px 16px 10px;
-}
-.menu-list { padding: 0 12px 8px; display: flex; flex-direction: column; gap: 8px; }
-.menu-btn {
-background: white; border: none; border-radius: 16px;
-padding: 15px 16px; display: flex; align-items: center;
-gap: 13px; cursor: pointer; text-align: left; width: 100%;
-box-shadow: 0 2px 10px rgba(26,31,60,0.07);
-transition: transform 0.15s;
-}
-.menu-btn:active { transform: scale(0.97); }
-.menu-icon {
-width: 44px; height: 44px; border-radius: 12px;
-display: flex; align-items: center; justify-content: center;
-font-size: 21px; flex-shrink: 0;
-}
-.ic-red{background:#FFF0ED} .ic-gold{background:#FFF8EC}
-.ic-green{background:#F0FAF5} .ic-blue{background:#EEF0FA}
-.ic-purple{background:#F5F0FF} .ic-teal{background:#E8F8F8}
-.ic-pink{background:#FEF0F6} .ic-navy{background:#EEEEF5}
-.menu-text { flex: 1; }
-.menu-title { font-size: 15px; font-weight: 600; color: var(–navy); margin-bottom: 2px; }
-.menu-sub { font-size: 12px; color: #999; }
-.menu-arrow { color: #CCC; font-size: 18px; flex-shrink: 0; }
-.menu-divider { height: 1px; background: #EBEBF0; margin: 6px 12px; }
-.pb { padding-bottom: 90px; }
+  /* MENU */
+  .menu-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: #aaa; padding: 18px 16px 10px;
+  }
+  .menu-list { padding: 0 12px 8px; display: flex; flex-direction: column; gap: 8px; }
+  .menu-btn {
+    background: white; border: none; border-radius: 16px;
+    padding: 15px 16px; display: flex; align-items: center;
+    gap: 13px; cursor: pointer; text-align: left; width: 100%;
+    box-shadow: 0 2px 10px rgba(26,31,60,0.07);
+    transition: transform 0.15s;
+  }
+  .menu-btn:active { transform: scale(0.97); }
+  .menu-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 21px; flex-shrink: 0;
+  }
+  .ic-red{background:#FFF0ED} .ic-gold{background:#FFF8EC}
+  .ic-green{background:#F0FAF5} .ic-blue{background:#EEF0FA}
+  .ic-purple{background:#F5F0FF} .ic-teal{background:#E8F8F8}
+  .ic-pink{background:#FEF0F6} .ic-navy{background:#EEEEF5}
+  .menu-text { flex: 1; }
+  .menu-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .menu-sub { font-size: 12px; color: #999; }
+  .menu-arrow { color: #CCC; font-size: 18px; flex-shrink: 0; }
+  .menu-divider { height: 1px; background: #EBEBF0; margin: 6px 12px; }
+  .pb { padding-bottom: 90px; }
 
-/* INNER HEADER */
-.inner-header { padding: 52px 20px 22px; position: relative; }
-.inner-header.red { background: linear-gradient(135deg,#E8341A,#B82A14); }
-.inner-header.gold { background: linear-gradient(135deg,#F5A623,#D4881A); }
-.inner-header.green { background: linear-gradient(135deg,#2D9E6B,#1A7A50); }
-.inner-header.blue { background: linear-gradient(135deg,#4E6BFF,#2D4ECC); }
-.inner-header.purple { background: linear-gradient(135deg,#6B4EFF,#4E2DCC); }
-.inner-header.navy { background: linear-gradient(135deg,#1A1F3C,#2D1B69); }
-.inner-header.teal { background: linear-gradient(135deg,#1A9E9E,#0E7A7A); }
-.inner-header.pink { background: linear-gradient(135deg,#E8348A,#B82A6E); }
-.back-btn {
-position: absolute; top: 14px; left: 16px;
-background: rgba(255,255,255,0.2); border: none; color: white;
-font-size: 14px; font-weight: 600; padding: 8px 14px;
-border-radius: 20px; cursor: pointer;
-}
-.inner-header .sec-icon { font-size: 34px; margin-bottom: 8px; }
-.inner-header h2 { font-family:‘Fraunces’,serif; font-weight:900; font-size:23px; color:white; line-height:1.2; margin-bottom:5px; }
-.inner-header p { font-size:13px; color:rgba(255,255,255,0.75); }
+  /* INNER HEADER */
+  .inner-header { padding: 52px 20px 22px; position: relative; }
+  .inner-header.red { background: linear-gradient(135deg,#FF6B4A,#E8341A); }
+  .inner-header.gold { background: linear-gradient(135deg,#F5A623,#D4881A); }
+  .inner-header.green { background: linear-gradient(135deg,#2D9E6B,#1A7A50); }
+  .inner-header.blue { background: linear-gradient(135deg,#4E6BFF,#2D4ECC); }
+  .inner-header.purple { background: linear-gradient(135deg,#6B4EFF,#4E2DCC); }
+  .inner-header.navy { background: linear-gradient(135deg,#1A1F3C,#2D1B69); }
+  .inner-header.teal { background: linear-gradient(135deg,#1A9E9E,#0E7A7A); }
+  .inner-header.pink { background: linear-gradient(135deg,#E8348A,#B82A6E); }
+  .back-btn {
+    position: absolute; top: 14px; left: 16px;
+    background: rgba(255,255,255,0.2); border: none; color: white;
+    font-size: 14px; font-weight: 600; padding: 8px 14px;
+    border-radius: 20px; cursor: pointer;
+  }
+  .inner-header .sec-icon { font-size: 34px; margin-bottom: 8px; }
+  .inner-header h2 { font-family:'Fraunces',serif; font-weight:900; font-size:23px; color:white; line-height:1.2; margin-bottom:5px; }
+  .inner-header p { font-size:13px; color:rgba(255,255,255,0.75); }
 
-/* CONTENT */
-.inner-body { padding: 14px; }
-.card { background: white; border-radius: 16px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 12px rgba(26,31,60,0.07); }
-.card h3 { font-family:‘Fraunces’,serif; font-weight:700; font-size:16px; color:var(–navy); margin-bottom:10px; }
-.card p { font-size:14px; color:#555; margin-bottom:8px; }
-.card p:last-child { margin-bottom:0; }
+  /* CONTENT */
+  .inner-body { padding: 14px; }
+  .card { background: white; border-radius: 16px; padding: 18px; margin-bottom: 12px; box-shadow: 0 2px 12px rgba(26,31,60,0.07); }
+  .card h3 { font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:var(--navy); margin-bottom:10px; }
+  .card p { font-size:14px; color:#555; margin-bottom:8px; }
+  .card p:last-child { margin-bottom:0; }
 
-.step-list { list-style:none; counter-reset:steps; }
-.step-list li {
-counter-increment:steps; display:flex; gap:11px;
-margin-bottom:11px; font-size:14px; align-items:flex-start; color:#444;
-}
-.step-list li::before {
-content:counter(steps); background:var(–red); color:white;
-font-weight:700; font-size:11px; min-width:22px; height:22px;
-border-radius:50%; display:flex; align-items:center;
-justify-content:center; margin-top:1px; flex-shrink:0;
-}
+  .step-list { list-style:none; counter-reset:steps; }
+  .step-list li {
+    counter-increment:steps; display:flex; gap:11px;
+    margin-bottom:11px; font-size:14px; align-items:flex-start; color:#444;
+  }
+  .step-list li::before {
+    content:counter(steps); background:var(--red); color:white;
+    font-weight:700; font-size:11px; min-width:22px; height:22px;
+    border-radius:50%; display:flex; align-items:center;
+    justify-content:center; margin-top:1px; flex-shrink:0;
+  }
 
-.fok { background:#F0FAF5; border-left:3px solid var(–green); border-radius:8px; padding:10px 14px; font-size:14px; margin-bottom:8px; color:#333; }
-.fok::before { content:’✅ ’; }
-.fno { background:#FFF0ED; border-left:3px solid var(–red); border-radius:8px; padding:10px 14px; font-size:14px; margin-bottom:8px; color:#333; }
-.fno::before { content:’❌ ’; }
-.frase-pill {
-background:white; border-radius:13px; padding:14px 16px;
-margin-bottom:9px; font-size:14px; font-weight:500; color:var(–navy);
-display:flex; align-items:center; gap:11px;
-box-shadow:0 2px 10px rgba(26,31,60,0.07); cursor:pointer;
-position:relative; transition:transform 0.15s;
-}
-.frase-pill:active{transform:scale(0.97)}
-.frase-pill .pill-icon{font-size:20px;flex-shrink:0}
-.frase-pill .copy-hint{position:absolute;right:14px;font-size:11px;color:#bbb}
-.frase-pill.gn{border-left:4px solid var(–green)}
-.frase-pill.gd{border-left:4px solid var(–gold)}
-.frase-pill.nv{border-left:4px solid var(–navy)}
-.frase-pill.pp{border-left:4px solid var(–purple)}
-.frase-pill.pk{border-left:4px solid var(–pink)}
+  .fok { background:#F0FAF5; border-left:3px solid var(--green); border-radius:8px; padding:10px 14px; font-size:14px; margin-bottom:8px; color:#333; }
+  .fok::before { content:'✅ '; }
+  .fno { background:#FFF0ED; border-left:3px solid var(--red); border-radius:8px; padding:10px 14px; font-size:14px; margin-bottom:8px; color:#333; }
+  .fno::before { content:'❌ '; }
+  .frase-pill {
+    background:white; border-radius:13px; padding:14px 16px;
+    margin-bottom:9px; font-size:14px; font-weight:500; color:var(--navy);
+    display:flex; align-items:center; gap:11px;
+    box-shadow:0 2px 10px rgba(26,31,60,0.07); cursor:pointer;
+    position:relative; transition:transform 0.15s;
+  }
+  .frase-pill:active{transform:scale(0.97)}
+  .frase-pill .pill-icon{font-size:20px;flex-shrink:0}
+  .frase-pill .copy-hint{position:absolute;right:14px;font-size:11px;color:#bbb}
+  .frase-pill.gn{border-left:4px solid var(--green)}
+  .frase-pill.gd{border-left:4px solid var(--gold)}
+  .frase-pill.nv{border-left:4px solid var(--navy)}
+  .frase-pill.pp{border-left:4px solid var(--purple)}
+  .frase-pill.pk{border-left:4px solid var(--pink)}
 
-.highlight {
-background:linear-gradient(135deg,#FFF8EC,#FFF0ED);
-border-radius:14px; padding:16px; margin-bottom:12px;
-border:1px solid rgba(245,166,35,0.2);
-}
-.highlight p { font-size:14px; color:#444; margin:0; }
-.highlight strong { color:var(–navy); }
+  .highlight {
+    background:linear-gradient(135deg,#FFF8EC,#FFF0ED);
+    border-radius:14px; padding:16px; margin-bottom:12px;
+    border:1px solid rgba(245,166,35,0.2);
+  }
+  .highlight p { font-size:14px; color:#444; margin:0; }
+  .highlight strong { color:var(--navy); }
 
-.mantra {
-background:linear-gradient(135deg,var(–navy),#2D1B69);
-border-radius:16px; padding:22px 20px; text-align:center; margin-bottom:12px;
-}
-.mantra p { font-family:‘Fraunces’,serif; font-style:italic; font-size:17px; color:white; line-height:1.5; }
-.mantra span { color:var(–gold); }
+  .mantra {
+    background:linear-gradient(135deg,var(--navy),#2D1B69);
+    border-radius:16px; padding:22px 20px; text-align:center; margin-bottom:12px;
+  }
+  .mantra p { font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:white; line-height:1.5; }
+  .mantra span { color:var(--gold); }
 
-.lembre {
-background:linear-gradient(135deg,#FEF0F6,#FFF0ED);
-border:1px solid rgba(232,52,138,0.15);
-border-radius:14px; padding:18px; margin-bottom:12px; text-align:center;
-}
-.lembre .l-emoji{font-size:32px;margin-bottom:8px}
-.lembre p{font-size:15px;color:#333;line-height:1.5;margin:0}
-.lembre strong{color:var(–pink)}
+  .lembre {
+    background:linear-gradient(135deg,#FEF0F6,#FFF0ED);
+    border:1px solid rgba(232,52,138,0.15);
+    border-radius:14px; padding:18px; margin-bottom:12px; text-align:center;
+  }
+  .lembre .l-emoji{font-size:32px;margin-bottom:8px}
+  .lembre p{font-size:15px;color:#333;line-height:1.5;margin:0}
+  .lembre strong{color:var(--pink)}
 
-/* CALM */
-.calm-item { background:white; border-radius:14px; padding:16px; margin-bottom:10px; box-shadow:0 2px 10px rgba(26,31,60,0.07); display:flex; gap:13px; align-items:flex-start; }
-.calm-letter { font-family:‘Fraunces’,serif; font-weight:900; font-size:38px; line-height:1; min-width:42px; }
-.calm-letter.c{color:var(–red)} .calm-letter.a{color:var(–gold)}
-.calm-letter.l{color:var(–green)} .calm-letter.m{color:var(–purple)}
-.calm-item h4{font-weight:700;font-size:15px;color:var(–navy);margin-bottom:4px}
-.calm-item p{font-size:13px;color:#666;margin:0}
+  /* CALM */
+  .calm-item { background:white; border-radius:14px; padding:16px; margin-bottom:10px; box-shadow:0 2px 10px rgba(26,31,60,0.07); display:flex; gap:13px; align-items:flex-start; }
+  .calm-item.cc { border-left: 4px solid #E8341A; }
+  .calm-item.ca { border-left: 4px solid #F5A623; }
+  .calm-item.cl { border-left: 4px solid #2D9E6B; }
+  .calm-item.cm { border-left: 4px solid #6B4EFF; }
+  .calm-letter { font-family:'Fraunces',serif; font-weight:900; font-size:38px; line-height:1; min-width:42px; }
+  .calm-letter.c{color:#E8341A} .calm-letter.a{color:#F5A623}
+  .calm-letter.l{color:#2D9E6B} .calm-letter.m{color:#6B4EFF}
+  .calm-item h4{font-weight:700;font-size:15px;color:var(--navy);margin-bottom:4px}
+  .calm-item p{font-size:13px;color:#666;margin:0}
 
-/* RESPIRAÇÃO */
-.breath-card { background:white; border-radius:16px; padding:20px; margin-bottom:10px; box-shadow:0 2px 10px rgba(26,31,60,0.07); text-align:center; }
-.breath-emoji{font-size:38px;margin-bottom:10px}
-.breath-card h4{font-family:‘Fraunces’,serif;font-weight:700;color:var(–navy);margin-bottom:8px}
-.breath-card p{font-size:14px;color:#666}
+  /* RESPIRAÇÃO */
+  .breath-card { background:white; border-radius:16px; padding:20px; margin-bottom:10px; box-shadow:0 2px 10px rgba(26,31,60,0.07); text-align:center; }
+  .breath-emoji{font-size:38px;margin-bottom:10px}
+  .breath-card h4{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .breath-card p{font-size:14px;color:#666}
 
-/* CHECKLIST */
-.check-item { display:flex; align-items:center; gap:13px; padding:13px 0; border-bottom:1px solid #F0F0F5; cursor:pointer; }
-.check-item:last-child{border-bottom:none}
-.chk { width:24px;height:24px;border:2px solid #DDD;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-size:14px;color:white; }
-.chk.done{background:var(–green);border-color:var(–green)}
-.check-item span{font-size:15px;color:#333}
-.check-item span.done{text-decoration:line-through;color:#bbb}
+  /* CHECKLIST */
+  .check-item { display:flex; align-items:center; gap:13px; padding:13px 0; border-bottom:1px solid #F0F0F5; cursor:pointer; }
+  .check-item:last-child{border-bottom:none}
+  .chk { width:24px;height:24px;border:2px solid #DDD;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-size:14px;color:transparent;background:white; }
+  .chk.done{background:#2D9E6B !important;border-color:#2D9E6B !important;color:white !important;}
+  .check-item span{font-size:15px;color:#333}
+  .check-item span.done{text-decoration:line-through;color:#bbb}
 
-/* SECTION TAG */
-.sec-tag { font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:8px;display:inline-block;margin-bottom:8px; }
-.tag-red{background:#FFF0ED;color:var(–red)}
-.tag-gold{background:#FFF8EC;color:#B87A10}
-.tag-green{background:#F0FAF5;color:var(–green)}
-.tag-pink{background:#FEF0F6;color:var(–pink)}
+  /* SECTION TAG */
+  .sec-tag { font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:8px;display:inline-block;margin-bottom:8px; }
+  .tag-red{background:#FFF0ED;color:var(--red)}
+  .tag-gold{background:#FFF8EC;color:#B87A10}
+  .tag-green{background:#F0FAF5;color:var(--green)}
+  .tag-pink{background:#FEF0F6;color:var(--pink)}
 
-/* BOTTOM NAV */
-.bottom-nav {
-position:fixed;bottom:0;left:0;right:0;background:white;
-border-top:1px solid #EBEBF0;padding:10px 0 20px;
-display:flex;justify-content:space-around;z-index:100;
-}
-.nav-item { display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border-radius:12px;border:none;background:none; }
-.nav-item.active .nav-icon{color:var(–red)}
-.nav-item.active .nav-label{color:var(–red);font-weight:600}
-.nav-icon{font-size:21px;color:#BCC}
-.nav-label{font-size:10px;color:#aaa}
+  /* BOTTOM NAV */
+  .bottom-nav {
+    position:fixed;bottom:0;left:0;right:0;background:white;
+    border-top:1px solid #EBEBF0;padding:10px 0 20px;
+    display:flex;justify-content:space-around;z-index:100;
+  }
+  .nav-item { display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border-radius:12px;border:none;background:none; }
+  .nav-item.active .nav-icon{color:var(--red)}
+  .nav-item.active .nav-label{color:var(--red);font-weight:600}
+  .nav-icon{font-size:21px;color:#BCC}
+  .nav-label{font-size:10px;color:#aaa}
 
-/* TOAST */
-.toast { position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(60px);background:var(–navy);color:white;padding:10px 22px;border-radius:30px;font-size:13px;font-weight:500;z-index:999;transition:transform 0.3s;white-space:nowrap;opacity:0; }
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  /* TOAST */
+  .toast { position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--navy);color:white;padding:10px 22px;border-radius:30px;font-size:13px;font-weight:500;z-index:999;transition:transform 0.3s;white-space:nowrap;opacity:0; }
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 </style>
-
 </head>
 <body>
 
 <!-- ===== HOME ===== -->
-
 <div id="screen-home">
   <div class="app-header">
     <div class="app-status-bar"><span>SOS Birras</span><span>Paula Roberta Amorim</span></div>
@@ -289,7 +290,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== SUPERMERCADO ===== -->
-
 <div id="screen-super" class="screen">
   <div class="inner-header red">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -322,7 +322,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== SHOPPING ===== -->
-
 <div id="screen-shopping" class="screen">
   <div class="inner-header gold">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -352,7 +351,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== VOVÓ ===== -->
-
 <div id="screen-vovo" class="screen">
   <div class="inner-header green">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -379,7 +377,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== FORA DE CASA ===== -->
-
 <div id="screen-foradecasa" class="screen">
   <div class="inner-header gold">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -431,7 +428,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== MÉDICO ===== -->
-
 <div id="screen-medico" class="screen">
   <div class="inner-header blue">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -461,7 +457,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== RESTAURANTE ===== -->
-
 <div id="screen-restaurante" class="screen">
   <div class="inner-header purple">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -490,7 +485,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== TRANSPORTE ===== -->
-
 <div id="screen-transporte" class="screen">
   <div class="inner-header teal">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -519,7 +513,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== FRASES SALVA-VIDAS ===== -->
-
 <div id="screen-frases" class="screen">
   <div class="inner-header pink">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -533,53 +526,49 @@ display:flex;justify-content:space-around;z-index:100;
       <p>Respira. <strong>Você não precisa ter a resposta perfeita.</strong> Só precisa estar presente.</p>
     </div>
 
-```
-<div class="sec-tag tag-green" style="margin-bottom:8px">🧠 Para acalmar</div>
-<div class="frase-pill gn" onclick="copiar(this,'Eu estou aqui com você')"><span class="pill-icon">🤗</span>"Eu estou aqui com você"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill gn" onclick="copiar(this,'Vamos passar por isso juntas')"><span class="pill-icon">🤗</span>"Vamos passar por isso juntas"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill gn" onclick="copiar(this,'Respira comigo')"><span class="pill-icon">🤗</span>"Respira comigo"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill gn" onclick="copiar(this,'Você não está sozinho')"><span class="pill-icon">🤗</span>"Você não está sozinho"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill gn" onclick="copiar(this,'Eu vou te ajudar')"><span class="pill-icon">🤗</span>"Eu vou te ajudar"<span class="copy-hint">copiar</span></div>
+    <div class="sec-tag tag-green" style="margin-bottom:8px">🧠 Para acalmar</div>
+    <div class="frase-pill gn" onclick="copiar(this,'Eu estou aqui com você')"><span class="pill-icon">🤗</span>"Eu estou aqui com você"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill gn" onclick="copiar(this,'Vamos passar por isso juntas')"><span class="pill-icon">🤗</span>"Vamos passar por isso juntas"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill gn" onclick="copiar(this,'Respira comigo')"><span class="pill-icon">🤗</span>"Respira comigo"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill gn" onclick="copiar(this,'Você não está sozinho')"><span class="pill-icon">🤗</span>"Você não está sozinho"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill gn" onclick="copiar(this,'Eu vou te ajudar')"><span class="pill-icon">🤗</span>"Eu vou te ajudar"<span class="copy-hint">copiar</span></div>
 
-<div class="sec-tag tag-gold" style="margin:14px 0 8px">💛 Para validar emoções</div>
-<div class="frase-pill gd" onclick="copiar(this,'Eu vejo que você está muito bravo')"><span class="pill-icon">💛</span>"Eu vejo que você está muito bravo"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill gd" onclick="copiar(this,'Isso foi difícil para você, né?')"><span class="pill-icon">💛</span>"Isso foi difícil para você, né?"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill gd" onclick="copiar(this,'É difícil quando não podemos ter o que queremos')"><span class="pill-icon">💛</span>"É difícil quando não podemos ter o que queremos"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill gd" onclick="copiar(this,'Seus sentimentos são importantes')"><span class="pill-icon">💛</span>"Seus sentimentos são importantes"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill gd" onclick="copiar(this,'Eu entendo você')"><span class="pill-icon">💛</span>"Eu entendo você"<span class="copy-hint">copiar</span></div>
+    <div class="sec-tag tag-gold" style="margin:14px 0 8px">💛 Para validar emoções</div>
+    <div class="frase-pill gd" onclick="copiar(this,'Eu vejo que você está muito bravo')"><span class="pill-icon">💛</span>"Eu vejo que você está muito bravo"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill gd" onclick="copiar(this,'Isso foi difícil para você, né?')"><span class="pill-icon">💛</span>"Isso foi difícil para você, né?"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill gd" onclick="copiar(this,'É difícil quando não podemos ter o que queremos')"><span class="pill-icon">💛</span>"É difícil quando não podemos ter o que queremos"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill gd" onclick="copiar(this,'Seus sentimentos são importantes')"><span class="pill-icon">💛</span>"Seus sentimentos são importantes"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill gd" onclick="copiar(this,'Eu entendo você')"><span class="pill-icon">💛</span>"Eu entendo você"<span class="copy-hint">copiar</span></div>
 
-<div class="sec-tag tag-red" style="margin:14px 0 8px">🎯 Para redirecionar</div>
-<div class="frase-pill nv" onclick="copiar(this,'Vamos resolver isso juntas?')"><span class="pill-icon">🎯</span>"Vamos resolver isso juntas?"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill nv" onclick="copiar(this,'Você pode escolher: A ou B?')"><span class="pill-icon">🎯</span>"Você pode escolher: A ou B?"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill nv" onclick="copiar(this,'Vamos tentar de outro jeito?')"><span class="pill-icon">🎯</span>"Vamos tentar de outro jeito?"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill nv" onclick="copiar(this,'Que tal fazermos uma pausa?')"><span class="pill-icon">🎯</span>"Que tal fazermos uma pausa?"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill nv" onclick="copiar(this,'Vamos pensar juntas em uma solução?')"><span class="pill-icon">🎯</span>"Vamos pensar juntas em uma solução?"<span class="copy-hint">copiar</span></div>
+    <div class="sec-tag tag-red" style="margin:14px 0 8px">🎯 Para redirecionar</div>
+    <div class="frase-pill nv" onclick="copiar(this,'Vamos resolver isso juntas?')"><span class="pill-icon">🎯</span>"Vamos resolver isso juntas?"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill nv" onclick="copiar(this,'Você pode escolher: A ou B?')"><span class="pill-icon">🎯</span>"Você pode escolher: A ou B?"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill nv" onclick="copiar(this,'Vamos tentar de outro jeito?')"><span class="pill-icon">🎯</span>"Vamos tentar de outro jeito?"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill nv" onclick="copiar(this,'Que tal fazermos uma pausa?')"><span class="pill-icon">🎯</span>"Que tal fazermos uma pausa?"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill nv" onclick="copiar(this,'Vamos pensar juntas em uma solução?')"><span class="pill-icon">🎯</span>"Vamos pensar juntas em uma solução?"<span class="copy-hint">copiar</span></div>
 
-<div class="sec-tag" style="margin:14px 0 8px;background:#FFF8EC;color:#B87A10">⚠️ Para colocar limites (sem gritar)</div>
-<div class="frase-pill pp" onclick="copiar(this,'Eu entendo que você está bravo, mas não vamos gritar')"><span class="pill-icon">⚠️</span>"Eu entendo que você está bravo, mas não vamos gritar"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill pp" onclick="copiar(this,'Você pode estar chateado, mas não pode bater')"><span class="pill-icon">⚠️</span>"Você pode estar chateado, mas não pode bater"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill pp" onclick="copiar(this,'Eu estou aqui para te ajudar a se acalmar')"><span class="pill-icon">⚠️</span>"Eu estou aqui para te ajudar a se acalmar"<span class="copy-hint">copiar</span></div>
-<div class="frase-pill pp" onclick="copiar(this,'Vamos encontrar outra forma de fazer isso')"><span class="pill-icon">⚠️</span>"Vamos encontrar outra forma de fazer isso"<span class="copy-hint">copiar</span></div>
+    <div class="sec-tag" style="margin:14px 0 8px;background:#FFF8EC;color:#B87A10">⚠️ Para colocar limites (sem gritar)</div>
+    <div class="frase-pill pp" onclick="copiar(this,'Eu entendo que você está bravo, mas não vamos gritar')"><span class="pill-icon">⚠️</span>"Eu entendo que você está bravo, mas não vamos gritar"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill pp" onclick="copiar(this,'Você pode estar chateado, mas não pode bater')"><span class="pill-icon">⚠️</span>"Você pode estar chateado, mas não pode bater"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill pp" onclick="copiar(this,'Eu estou aqui para te ajudar a se acalmar')"><span class="pill-icon">⚠️</span>"Eu estou aqui para te ajudar a se acalmar"<span class="copy-hint">copiar</span></div>
+    <div class="frase-pill pp" onclick="copiar(this,'Vamos encontrar outra forma de fazer isso')"><span class="pill-icon">⚠️</span>"Vamos encontrar outra forma de fazer isso"<span class="copy-hint">copiar</span></div>
 
-<div class="card" style="margin-top:6px"><h3>❌ Evite dizer</h3>
-  <div class="fno">"Para de fazer birra"</div>
-  <div class="fno">"Você está fazendo feio"</div>
-  <div class="fno">"Todo mundo está olhando"</div>
-  <div class="fno">"Não é nada demais"</div>
-  <div class="fno">"Você está exagerando"</div>
-</div>
+    <div class="card" style="margin-top:6px"><h3>❌ Evite dizer</h3>
+      <div class="fno">"Para de fazer birra"</div>
+      <div class="fno">"Você está fazendo feio"</div>
+      <div class="fno">"Todo mundo está olhando"</div>
+      <div class="fno">"Não é nada demais"</div>
+      <div class="fno">"Você está exagerando"</div>
+    </div>
 
-<div class="lembre">
-  <div class="l-emoji">❤️</div>
-  <p>Você não precisa controlar tudo.<br><strong>Você só precisa se conectar.</strong></p>
-</div>
-```
-
+    <div class="lembre">
+      <div class="l-emoji">❤️</div>
+      <p>Você não precisa controlar tudo.<br><strong>Você só precisa se conectar.</strong></p>
+    </div>
   </div>
 </div>
 
 <!-- ===== DEPOIS DA BIRRA ===== -->
-
 <div id="screen-depois" class="screen">
   <div class="inner-header pink">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -630,7 +619,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== CALM ===== -->
-
 <div id="screen-calm" class="screen">
   <div class="inner-header navy">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -639,16 +627,15 @@ display:flex;justify-content:space-around;z-index:100;
     <p>4 passos para qualquer birra pública</p>
   </div>
   <div class="inner-body pb">
-    <div class="calm-item"><div class="calm-letter c">C</div><div><h4>CONECTE-SE</h4><p>Abaixe-se na altura dele. Contato visual. Tom calmo e baixo. "Eu vejo que você está muito bravo."</p></div></div>
-    <div class="calm-item"><div class="calm-letter a">A</div><div><h4>ACOLHA</h4><p>Valide a emoção sem validar o comportamento. Nunca diga "Não é para tanto" ou "Para de drama".</p></div></div>
-    <div class="calm-item"><div class="calm-letter l">L</div><div><h4>LIMITE</h4><p>Firme e gentil. "Entendo que você está chateado, mas não vamos gritar aqui."</p></div></div>
-    <div class="calm-item"><div class="calm-letter m">M</div><div><h4>MOVA-SE</h4><p>Redirecione para solução ou mude o ambiente. Sempre ofereça escolha: "A ou B?"</p></div></div>
+    <div class="calm-item cc"><div class="calm-letter c">C</div><div><h4>CONECTE-SE</h4><p>Abaixe-se na altura dele. Contato visual. Tom calmo e baixo. "Eu vejo que você está muito bravo."</p></div></div>
+    <div class="calm-item ca"><div class="calm-letter a">A</div><div><h4>ACOLHA</h4><p>Valide a emoção sem validar o comportamento. Nunca diga "Não é para tanto" ou "Para de drama".</p></div></div>
+    <div class="calm-item cl"><div class="calm-letter l">L</div><div><h4>LIMITE</h4><p>Firme e gentil. "Entendo que você está chateado, mas não vamos gritar aqui."</p></div></div>
+    <div class="calm-item cm"><div class="calm-letter m">M</div><div><h4>MOVA-SE</h4><p>Redirecione para solução ou mude o ambiente. Sempre ofereça escolha: "A ou B?"</p></div></div>
     <div class="mantra"><p>"Eu estou ensinando meu filho a lidar com emoções de forma saudável.<br><span>Isso é amor em ação.</span>"</p></div>
   </div>
 </div>
 
 <!-- ===== RESPIRAÇÃO ===== -->
-
 <div id="screen-respiracao" class="screen">
   <div class="inner-header blue">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -664,7 +651,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== CHECKLIST ===== -->
-
 <div id="screen-checklist" class="screen">
   <div class="inner-header green">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -691,7 +677,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- ===== OLHARES ===== -->
-
 <div id="screen-olhares" class="screen">
   <div class="inner-header gold">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
@@ -717,7 +702,6 @@ display:flex;justify-content:space-around;z-index:100;
 </div>
 
 <!-- BOTTOM NAV -->
-
 <div class="bottom-nav">
   <button class="nav-item active" id="nav-home" onclick="show('home');setNav('home')"><span class="nav-icon">🆘</span><span class="nav-label">SOS</span></button>
   <button class="nav-item" id="nav-frases" onclick="show('frases');setNav('frases')"><span class="nav-icon">💬</span><span class="nav-label">Frases</span></button>
@@ -731,8 +715,13 @@ display:flex;justify-content:space-around;z-index:100;
 <script>
 function show(id) {
   document.querySelectorAll('#screen-home,.screen').forEach(s=>s.style.display='none');
-  const el = document.getElementById('screen-'+id)||document.getElementById('screen-home');
-  if(el) el.style.display='block';
+  if(id === 'home') {
+    document.getElementById('screen-home').style.display='block';
+  } else {
+    const el = document.getElementById('screen-'+id);
+    if(el) el.style.display='block';
+    else document.getElementById('screen-home').style.display='block';
+  }
   window.scrollTo(0,0);
 }
 function back() { show('home'); setNav('home'); }
@@ -742,8 +731,11 @@ function setNav(id) {
   if(nav) nav.classList.add('active');
 }
 function chk(item) {
-  item.querySelector('.chk').classList.toggle('done');
-  item.querySelector('span').classList.toggle('done');
+  const box = item.querySelector('.chk');
+  const txt = item.querySelector('span');
+  const isDone = box.classList.toggle('done');
+  box.textContent = isDone ? '✓' : '';
+  txt.classList.toggle('done');
 }
 function copiar(el, texto) {
   if(navigator.clipboard) navigator.clipboard.writeText(texto);
@@ -753,6 +745,5 @@ function copiar(el, texto) {
 }
 document.getElementById('screen-home').style.display='block';
 </script>
-
 </body>
 </html>
