@@ -192,7 +192,7 @@
     border-top:1px solid #EBEBF0;padding:10px 0 20px;
     display:flex;justify-content:space-around;z-index:100;
   }
-  .nav-item { display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border-radius:12px;border:none;background:none; }
+  .nav-item { display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border-radius:12px;border:none;background:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent; }
   .nav-item.active .nav-icon{color:var(--red)}
   .nav-item.active .nav-label{color:var(--red);font-weight:600}
   .nav-icon{font-size:21px;color:#BCC}
@@ -255,7 +255,7 @@
 
   <div class="menu-divider"></div>
   <div class="menu-label">💬 Ferramentas e apoio</div>
-  <div class="menu-list pb">
+  <div class="menu-list">
     <button class="menu-btn" onclick="show('frases')">
       <div class="menu-icon ic-pink">💬</div>
       <div class="menu-text"><div class="menu-title">Frases Salva-Vidas</div><div class="menu-sub">O que dizer quando a cabeça trava</div></div>
@@ -287,7 +287,18 @@
       <span class="menu-arrow">›</span>
     </button>
   </div>
+
+  <div class="menu-divider"></div>
+  <div style="padding:16px 12px 100px">
+    <div style="background:linear-gradient(135deg,#1A1F3C,#2D1B69);border-radius:18px;padding:20px;text-align:center">
+      <div style="font-size:28px;margin-bottom:8px">🌱</div>
+      <div style="font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:white;margin-bottom:6px">Quer ir mais fundo?</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:16px;line-height:1.5">Este guia é só o começo.<br>Conheça o método completo de disciplina positiva.</div>
+      <a href="#" style="display:inline-block;background:#F5A623;color:#1A1F3C;font-family:'Fraunces',serif;font-weight:700;font-size:15px;padding:12px 24px;border-radius:12px;text-decoration:none">Conhecer o método →</a>
+    </div>
+  </div>
 </div>
+
 
 <!-- ===== SUPERMERCADO ===== -->
 <div id="screen-super" class="screen">
