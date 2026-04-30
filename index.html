@@ -717,7 +717,7 @@
 <div class="bottom-nav">
   <button class="nav-item active" id="nav-home" onclick="show('home');setNav('home')"><span class="nav-icon">🆘</span><span class="nav-label">SOS</span></button>
   <button class="nav-item" id="nav-frases" onclick="show('frases');setNav('frases')"><span class="nav-icon">💬</span><span class="nav-label">Frases</span></button>
-  <button class="nav-item" id="nav-depois" onclick="show('depois');setNav('depois')"><span class="nav-icon" style="font-style:normal">❤️</span><span class="nav-label">Depois</span></button>
+  <button class="nav-item" id="nav-depois" onclick="show('depois');setNav('depois')"><svg width="22" height="20" viewBox="0 0 22 20" style="display:block;margin:0 auto" fill="#BBCCBB"><path d="M11 19C11 19 1 12 1 5.5C1 3 3 1 5.5 1C7.24 1 8.91 2 10 3.09C11.09 2 12.76 1 14.5 1C17 1 19 3 19 5.5C19 12 11 19 11 19Z" stroke="none"/></svg><span class="nav-label">Depois</span></button>
   <button class="nav-item" id="nav-calm" onclick="show('calm');setNav('calm')"><span class="nav-icon">🧠</span><span class="nav-label">CALM</span></button>
   <button class="nav-item" id="nav-checklist" onclick="show('checklist');setNav('checklist')"><span class="nav-icon">✅</span><span class="nav-label">Check</span></button>
 </div>
@@ -740,7 +740,14 @@ function back() { show('home'); setNav('home'); }
 function setNav(id) {
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   const nav=document.getElementById('nav-'+id);
-  if(nav) nav.classList.add('active');
+  if(nav) {
+    nav.classList.add('active');
+    // Colore o SVG do coração quando ativo
+    const svg = nav.querySelector('svg path');
+    if(svg) svg.setAttribute('fill','#E8341A');
+  }
+  // Reset outros SVGs
+  document.querySelectorAll('.nav-item:not(.active) svg path').forEach(p=>p.setAttribute('fill','#BBCCBB'));
 }
 function chk(item) {
   const box = item.querySelector('.chk');
