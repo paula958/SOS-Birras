@@ -191,7 +191,8 @@
     position:fixed;bottom:0;left:0;right:0;background:white;
     border-top:1px solid #EBEBF0;
     padding:10px 0 calc(20px + env(safe-area-inset-bottom));
-    display:flex;justify-content:space-around;z-index:100;
+    display:flex;justify-content:space-around;z-index:9999;
+    isolation: isolate;
   }
   .nav-item { display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border-radius:12px;border:none;background:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:44px;min-height:44px;justify-content:center; }
   .nav-item.active .nav-icon{color:var(--red)}
@@ -584,7 +585,7 @@
 <div id="screen-depois" class="screen">
   <div class="inner-header pink">
     <button class="back-btn" onclick="back()">‹ Voltar</button>
-    <div class="sec-icon">❤️</div>
+    <div class="sec-icon">🌸</div>
     <h2>Depois da Birra</h2>
     <p>Quando a tempestade passa</p>
   </div>
@@ -715,11 +716,11 @@
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
-  <button class="nav-item active" id="nav-home" onclick="show('home');setNav('home')"><span class="nav-icon">🆘</span><span class="nav-label">SOS</span></button>
-  <button class="nav-item" id="nav-frases" onclick="show('frases');setNav('frases')"><span class="nav-icon">💬</span><span class="nav-label">Frases</span></button>
-  <button class="nav-item" id="nav-depois" onclick="show('depois');setNav('depois')"><svg width="22" height="20" viewBox="0 0 22 20" style="display:block;margin:0 auto" fill="#BBCCBB"><path d="M11 19C11 19 1 12 1 5.5C1 3 3 1 5.5 1C7.24 1 8.91 2 10 3.09C11.09 2 12.76 1 14.5 1C17 1 19 3 19 5.5C19 12 11 19 11 19Z" stroke="none"/></svg><span class="nav-label">Depois</span></button>
-  <button class="nav-item" id="nav-calm" onclick="show('calm');setNav('calm')"><span class="nav-icon">🧠</span><span class="nav-label">CALM</span></button>
-  <button class="nav-item" id="nav-checklist" onclick="show('checklist');setNav('checklist')"><span class="nav-icon">✅</span><span class="nav-label">Check</span></button>
+  <button type="button" class="nav-item active" id="nav-home" onclick="show('home');setNav('home')"><span class="nav-icon">🆘</span><span class="nav-label">SOS</span></button>
+  <button type="button" class="nav-item" id="nav-frases" onclick="show('frases');setNav('frases')"><span class="nav-icon">💬</span><span class="nav-label">Frases</span></button>
+  <button type="button" class="nav-item" id="nav-depois" onclick="show('depois');setNav('depois')"><span class="nav-icon">🌸</span><span class="nav-label">Depois</span></button>
+  <button type="button" class="nav-item" id="nav-calm" onclick="show('calm');setNav('calm')"><span class="nav-icon">🧠</span><span class="nav-label">CALM</span></button>
+  <button type="button" class="nav-item" id="nav-checklist" onclick="show('checklist');setNav('checklist')"><span class="nav-icon">✅</span><span class="nav-label">Check</span></button>
 </div>
 
 <div class="toast" id="toast">✅ Frase copiada!</div>
@@ -763,28 +764,6 @@ function copiar(el, texto) {
   setTimeout(()=>t.classList.remove('show'),2000);
 }
 document.getElementById('screen-home').style.display='block';
-
-// Fix iOS — garante toque em todos os botões do nav
-document.querySelectorAll('.nav-item').forEach(btn => {
-  btn.addEventListener('touchend', function(e) {
-    e.preventDefault();
-    this.click();
-  });
-});
-
-// Fix específico para botão depois
-var btnDepois = document.getElementById('nav-depois');
-if(btnDepois) {
-  btnDepois.addEventListener('touchstart', function(e) {
-    e.stopPropagation();
-  });
-  btnDepois.addEventListener('touchend', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    show('depois');
-    setNav('depois');
-  });
-}
 </script>
 </body>
 </html>
