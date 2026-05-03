@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bônus 2 – Mapa da Birra · SOS Birras</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#E8341A;--navy:#1A1F3C;--gold:#F5A623;--green:#2D9E6B;--purple:#6B4EFF;--pink:#E8348A;--soft:#F4F4F8}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:var(--soft);color:#2C2C2C;line-height:1.65}
+
+  /* HERO */
+  .hero{background:linear-gradient(145deg,#2D1B69,#1A1F3C);padding:52px 24px 36px;text-align:center}
+  .badge{display:inline-block;background:rgba(245,166,35,0.2);color:var(--gold);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(245,166,35,0.3)}
+  .hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(26px,7vw,38px);color:white;line-height:1.15;margin-bottom:12px}
+  .hero h1 em{color:var(--gold);font-style:normal}
+  .hero p{color:rgba(255,255,255,0.72);font-size:14px;max-width:300px;margin:0 auto}
+
+  /* INTRO */
+  .intro{margin:16px;background:white;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(26,31,60,0.07)}
+  .intro h3{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--navy);margin-bottom:10px}
+  .intro p{font-size:14px;color:#555;line-height:1.6;margin-bottom:8px}
+  .intro p:last-child{margin-bottom:0}
+  .intro strong{color:var(--navy)}
+
+  /* DIAGNÓSTICO */
+  .diag-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#aaa;padding:16px 16px 8px}
+
+  .diag-card{margin:0 16px 12px;background:white;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(26,31,60,0.08);cursor:pointer}
+  .diag-header{padding:16px 18px;display:flex;align-items:center;gap:14px}
+  .diag-header.red{background:#FFF0ED;border-left:4px solid var(--red)}
+  .diag-header.gold{background:#FFF8EC;border-left:4px solid var(--gold)}
+  .diag-header.green{background:#F0FAF5;border-left:4px solid var(--green)}
+  .diag-header.blue{background:#EEF0FA;border-left:4px solid #4E6BFF}
+  .diag-header.purple{background:#F5F0FF;border-left:4px solid var(--purple)}
+  .diag-header.pink{background:#FEF0F6;border-left:4px solid var(--pink)}
+  .diag-header.teal{background:#E8F8F8;border-left:4px solid #1A9E9E}
+  .diag-emoji{font-size:26px;flex-shrink:0}
+  .diag-info{flex:1}
+  .diag-titulo{font-weight:700;font-size:15px;color:var(--navy);margin-bottom:2px}
+  .diag-sinais{font-size:12px;color:#888}
+  .diag-arrow{color:#CCC;font-size:18px;transition:transform 0.2s}
+  .diag-arrow.open{transform:rotate(90deg)}
+
+  .diag-body{display:none;padding:0 18px 18px}
+  .diag-body.open{display:block}
+
+  /* SEÇÕES DO CORPO */
+  .diag-section{margin-top:14px}
+  .diag-section-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .dot.red{background:var(--red)}
+  .dot.green{background:var(--green)}
+  .dot.blue{background:#4E6BFF}
+  .dot.gold{background:var(--gold)}
+
+  .porq-box{background:#F8F8FF;border-radius:10px;padding:12px 14px;font-size:13px;color:#444;line-height:1.5}
+  .porq-box strong{color:var(--navy)}
+
+  .sinais-list{display:flex;flex-wrap:wrap;gap:6px}
+  .sinal-tag{background:#F0F0F5;border-radius:20px;padding:4px 12px;font-size:12px;color:#555}
+
+  .estrategia-list{list-style:none;counter-reset:est}
+  .estrategia-list li{counter-increment:est;display:flex;gap:10px;margin-bottom:8px;font-size:13px;color:#444;align-items:flex-start}
+  .estrategia-list li::before{content:counter(est);background:var(--navy);color:white;font-weight:700;font-size:11px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+  .frase-rapida{background:white;border-radius:10px;padding:12px 44px 12px 14px;font-size:14px;font-weight:600;color:var(--navy);border-left:3px solid var(--green);cursor:pointer;position:relative;box-shadow:0 1px 6px rgba(26,31,60,0.06);margin-bottom:6px;transition:transform 0.15s;line-height:1.4}
+  .frase-rapida:active{transform:scale(0.97)}
+  .frase-rapida:last-child{margin-bottom:0}
+  .copy-btn{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:var(--green);color:white;border:none;border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer;font-weight:600}
+
+  .prev-box{background:#FFF0ED;border-radius:10px;padding:12px 14px}
+  .prev-item{font-size:13px;color:#555;margin-bottom:6px;display:flex;gap:8px;align-items:flex-start}
+  .prev-item:last-child{margin-bottom:0}
+  .prev-item::before{content:'→';color:var(--red);font-weight:700;flex-shrink:0}
+
+  /* REGRA DE OURO */
+  .regra{margin:16px;background:linear-gradient(135deg,#FFF8EC,#FEF0F6);border-radius:16px;padding:20px;border:1px solid rgba(245,166,35,0.2)}
+  .regra h3{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--navy);margin-bottom:12px}
+  .regra-item{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+  .regra-item:last-child{margin-bottom:0}
+  .regra-num{width:28px;height:28px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  .regra-item p{font-size:14px;color:#444;margin:0;line-height:1.5}
+  .regra-item strong{color:var(--navy)}
+
+  /* MANTRA */
+  .mantra{margin:16px;background:linear-gradient(135deg,var(--navy),#2D1B69);border-radius:16px;padding:24px 20px;text-align:center}
+  .mantra p{font-family:'Fraunces',serif;font-style:italic;font-size:17px;color:white;line-height:1.5}
+  .mantra span{color:var(--gold)}
+
+  /* CTA */
+  .cta-box{margin:16px 16px 32px;background:linear-gradient(135deg,#1A1F3C,#2D1B69);border-radius:18px;padding:24px 20px;text-align:center}
+  .cta-box .icon{font-size:28px;margin-bottom:10px}
+  .cta-box h3{font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:white;margin-bottom:8px}
+  .cta-box p{font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:20px;line-height:1.6}
+  .cta-box a{display:inline-block;background:#F5A623;color:#1A1F3C;font-family:'Fraunces',serif;font-weight:700;font-size:16px;padding:14px 28px;border-radius:12px;text-decoration:none}
+
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--navy);color:white;padding:10px 22px;border-radius:30px;font-size:13px;font-weight:500;z-index:9999;transition:transform 0.3s;white-space:nowrap;opacity:0}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">🗺 Bônus 2</div>
+  <h1>Mapa da<br><em>Birra</em></h1>
+  <p>Identifique o gatilho real → entenda o porquê → aja com segurança</p>
+</div>
+
+<div class="intro">
+  <h3>🔍 Um diagnóstico rápido para cada crise</h3>
+  <p>Toda birra tem uma causa. Quando você <strong>identifica o gatilho real</strong>, para de reagir no automático e começa a responder de forma certeira.</p>
+  <p>Toque em cada situação para ver os sinais de alerta, o porquê científico, a estratégia e as frases prontas.</p>
+</div>
+
+<div class="diag-label">Toque para expandir cada situação</div>
+
+<!-- 1 -->
+<div class="diag-card" onclick="toggle(this)">
+  <div class="diag-header red">
+    <span class="diag-emoji">🍭</span>
+    <div class="diag-info"><div class="diag-titulo">Quer algo que não pode ter</div><div class="diag-sinais">doce, brinquedo, celular…</div></div>
+    <span class="diag-arrow">›</span>
+  </div>
+  <div class="diag-body">
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot red"></div> Sinais de alerta</div>
+      <div class="sinais-list">
+        <span class="sinal-tag">Choro imediato</span>
+        <span class="sinal-tag">Joga no chão</span>
+        <span class="sinal-tag">Grita "eu quero"</span>
+        <span class="sinal-tag">Se agita</span>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot blue"></div> Por que acontece</div>
+      <div class="porq-box">O cérebro infantil ainda não desenvolveu a capacidade de <strong>adiar recompensas</strong>. Não é teimosia — é neurológico. A região responsável por isso (córtex pré-frontal) só termina de se desenvolver por volta dos 25 anos.</div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot green"></div> Estratégia</div>
+      <ol class="estrategia-list">
+        <li>Valide antes de qualquer coisa</li>
+        <li>Ofereça uma "saída digna" — lista de desejos, foto, outra escolha</li>
+        <li>Redirecione com uma tarefa ou escolha</li>
+      </ol>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot gold"></div> Frases prontas</div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'Eu vejo que você quer muito isso. Vamos colocar na lista para outro dia?')">
+        "Eu vejo que você quer muito isso. Vamos colocar na lista para outro dia?"
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'Que tal você me ajudar a encontrar as bananas? Você é ótimo nisso.')">
+        "Que tal você me ajudar a encontrar as bananas? Você é ótimo nisso."
+        <button class="copy-btn">copiar</button>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot red"></div> Previna na próxima vez</div>
+      <div class="prev-box">
+        <div class="prev-item">Combine as regras antes de entrar na loja</div>
+        <div class="prev-item">Leve um lanchinho — fome potencializa tudo</div>
+        <div class="prev-item">Envolva a criança nas compras com uma "missão"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="diag-card" onclick="toggle(this)">
+  <div class="diag-header gold">
+    <span class="diag-emoji">🚪</span>
+    <div class="diag-info"><div class="diag-titulo">Não quer sair de um lugar</div><div class="diag-sinais">parquinho, shopping, visita…</div></div>
+    <span class="diag-arrow">›</span>
+  </div>
+  <div class="diag-body">
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot red"></div> Sinais de alerta</div>
+      <div class="sinais-list">
+        <span class="sinal-tag">Finge não ouvir</span>
+        <span class="sinal-tag">Corre para longe</span>
+        <span class="sinal-tag">Chora ao ser chamado</span>
+        <span class="sinal-tag">Se joga no chão</span>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot blue"></div> Por que acontece</div>
+      <div class="porq-box">Transições abruptas ativam o sistema nervoso de alarme. Para a criança, sair do parquinho sem aviso é como uma <strong>perda súbita</strong> — o cérebro reage como se fosse uma ameaça.</div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot green"></div> Estratégia</div>
+      <ol class="estrategia-list">
+        <li>Avise 5 minutos antes — e repita com 2 minutos</li>
+        <li>Crie um ritual de despedida</li>
+        <li>Dê escolha na forma de sair, não na saída em si</li>
+      </ol>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot gold"></div> Frases prontas</div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'Em 5 minutinhos vamos ir embora. Você consegue aproveitar bem esse tempo?')">
+        "Em 5 minutinhos vamos ir embora. Você consegue aproveitar bem esse tempo?"
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'Vamos dar tchau para o parquinho? Quer acenar ou mandar beijinho?')">
+        "Vamos dar tchau para o parquinho? Quer acenar ou mandar beijinho?"
+        <button class="copy-btn">copiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="diag-card" onclick="toggle(this)">
+  <div class="diag-header green">
+    <span class="diag-emoji">😴</span>
+    <div class="diag-info"><div class="diag-titulo">Cansaço ou fome</div><div class="diag-sinais">birras no fim do dia ou sem lanche</div></div>
+    <span class="diag-arrow">›</span>
+  </div>
+  <div class="diag-body">
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot red"></div> Sinais de alerta</div>
+      <div class="sinais-list">
+        <span class="sinal-tag">Esfrega os olhos</span>
+        <span class="sinal-tag">Fica grudento</span>
+        <span class="sinal-tag">Chora por qualquer coisa</span>
+        <span class="sinal-tag">Irritação súbita</span>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot blue"></div> Por que acontece</div>
+      <div class="porq-box">Fome e cansaço <strong>reduzem drasticamente</strong> a capacidade de regulação emocional — em adultos também. Tentar resolver a birra sem resolver a causa é inútil.</div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot green"></div> Estratégia</div>
+      <ol class="estrategia-list">
+        <li>Não tente resolver a birra — resolva a causa</li>
+        <li>Ofereça água e lanche antes de qualquer conversa</li>
+        <li>Reduza estímulos e encontre lugar mais calmo</li>
+      </ol>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot gold"></div> Frases prontas</div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'Você está com fominha? Vamos comer alguma coisa e depois a gente conversa.')">
+        "Você está com fominha? Vamos comer alguma coisa e depois a gente conversa."
+        <button class="copy-btn">copiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="diag-card" onclick="toggle(this)">
+  <div class="diag-header blue">
+    <span class="diag-emoji">😰</span>
+    <div class="diag-info"><div class="diag-titulo">Medo ou ansiedade</div><div class="diag-sinais">médico, lugar novo, situação desconhecida</div></div>
+    <span class="diag-arrow">›</span>
+  </div>
+  <div class="diag-body">
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot red"></div> Sinais de alerta</div>
+      <div class="sinais-list">
+        <span class="sinal-tag">Agarra o adulto</span>
+        <span class="sinal-tag">Recusa entrar no lugar</span>
+        <span class="sinal-tag">Choro intenso</span>
+        <span class="sinal-tag">Tremor ou rigidez</span>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot blue"></div> Por que acontece</div>
+      <div class="porq-box">O medo ativa o sistema nervoso de sobrevivência. A criança <strong>não está sendo dramática</strong> — o cérebro dela interpretou aquela situação como ameaça real e reagiu para se proteger.</div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot green"></div> Estratégia</div>
+      <ol class="estrategia-list">
+        <li>Valide o medo — nunca minimize</li>
+        <li>Explique o que vai acontecer com calma</li>
+        <li>Respire junto e dê uma pequena escolha</li>
+      </ol>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot gold"></div> Frases prontas</div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'É normal ter medo. Até eu fico nervosa às vezes. Vamos passar por isso juntos.')">
+        "É normal ter medo. Até eu fico nervosa às vezes. Vamos passar por isso juntos."
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'Você quer que eu fique do seu lado direito ou esquerdo?')">
+        "Você quer que eu fique do seu lado direito ou esquerdo?"
+        <button class="copy-btn">copiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="diag-card" onclick="toggle(this)">
+  <div class="diag-header purple">
+    <span class="diag-emoji">🌀</span>
+    <div class="diag-info"><div class="diag-titulo">Sobrecarga sensorial</div><div class="diag-sinais">shopping, festa, viagem, lugar barulhento</div></div>
+    <span class="diag-arrow">›</span>
+  </div>
+  <div class="diag-body">
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot red"></div> Sinais de alerta</div>
+      <div class="sinais-list">
+        <span class="sinal-tag">Tapa os ouvidos</span>
+        <span class="sinal-tag">Fica agitado sem motivo</span>
+        <span class="sinal-tag">Quer colo de repente</span>
+        <span class="sinal-tag">Choro sem causa aparente</span>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot blue"></div> Por que acontece</div>
+      <div class="porq-box">O cérebro infantil processa estímulos com <strong>muito mais intensidade</strong> que o adulto. O que parece normal para nós pode ser avassalador para ela — luzes, barulhos, cheiros e movimentos ao mesmo tempo.</div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot green"></div> Estratégia</div>
+      <ol class="estrategia-list">
+        <li>Reduza os estímulos primeiro — lugar reservado</li>
+        <li>Ofereça água e respiração</li>
+        <li>Fale baixo e devagar</li>
+      </ol>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot gold"></div> Frases prontas</div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'Está barulhento aqui, né? Vamos encontrar um cantinho mais calmo?')">
+        "Está barulhento aqui, né? Vamos encontrar um cantinho mais calmo?"
+        <button class="copy-btn">copiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="diag-card" onclick="toggle(this)">
+  <div class="diag-header teal">
+    <span class="diag-emoji">🌍</span>
+    <div class="diag-info"><div class="diag-titulo">Fora da rotina</div><div class="diag-sinais">visitas, viagens, mudança de plano</div></div>
+    <span class="diag-arrow">›</span>
+  </div>
+  <div class="diag-body">
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot red"></div> Sinais de alerta</div>
+      <div class="sinais-list">
+        <span class="sinal-tag">Birras sem motivo claro</span>
+        <span class="sinal-tag">Mais grudento que o normal</span>
+        <span class="sinal-tag">Dificuldade para dormir</span>
+        <span class="sinal-tag">Choro fácil</span>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot blue"></div> Por que acontece</div>
+      <div class="porq-box">Crianças constroem segurança na <strong>previsibilidade</strong>. Quando a rotina muda, o sistema nervoso entra em estado de alerta — mesmo que a mudança seja positiva, como uma viagem.</div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot green"></div> Estratégia</div>
+      <ol class="estrategia-list">
+        <li>Antecipe o que vai acontecer antes de sair</li>
+        <li>Leve um objeto familiar — brinquedo, naninha</li>
+        <li>Mantenha pelo menos uma parte da rotina (hora de dormir, lanche)</li>
+      </ol>
+    </div>
+    <div class="diag-section">
+      <div class="diag-section-label"><div class="dot gold"></div> Frases prontas</div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'Eu sei que é muita coisa nova de uma vez. Vamos dar uma pausinha juntos?')">
+        "Eu sei que é muita coisa nova de uma vez. Vamos dar uma pausinha juntos?"
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="frase-rapida" onclick="event.stopPropagation();copiar(this,'O plano mudou um pouquinho. Vou te explicar o que vai acontecer agora, tá?')">
+        "O plano mudou um pouquinho. Vou te explicar o que vai acontecer agora, tá?"
+        <button class="copy-btn">copiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGRA DE OURO -->
+<div class="regra">
+  <h3>🔑 As 3 perguntas do diagnóstico rápido</h3>
+  <div class="regra-item">
+    <div class="regra-num">1</div>
+    <p><strong>Ela está com fome ou cansaço?</strong> Se sim, resolva isso primeiro — antes de qualquer estratégia.</p>
+  </div>
+  <div class="regra-item">
+    <div class="regra-num">2</div>
+    <p><strong>Houve uma mudança ou surpresa?</strong> Se sim, ela provavelmente está em sobrecarga — reduza estímulos e conecte.</p>
+  </div>
+  <div class="regra-item">
+    <div class="regra-num">3</div>
+    <p><strong>Ela não conseguiu algo que queria?</strong> Se sim, valide a emoção antes de qualquer redirecionamento.</p>
+  </div>
+</div>
+
+<div class="mantra">
+  <p>"Toda birra é uma criança dizendo:<br><span>'Preciso de ajuda para lidar com isso.'</span>"</p>
+</div>
+
+<div class="cta-box">
+  <div class="icon">🌱</div>
+  <h3>Gostou de entender o porquê?</h3>
+  <p>No curso <strong style="color:var(--gold)">Transformação 21 Dias</strong> você aprende o método completo — não só para birras, mas para construir uma relação mais leve com seu filho todos os dias.</p>
+  <a href="#">Quero conhecer →</a>
+</div>
+
+<div class="toast" id="toast">✅ Frase copiada!</div>
+
+<script>
+function toggle(card) {
+  const body = card.querySelector('.diag-body');
+  const arrow = card.querySelector('.diag-arrow');
+  const isOpen = body.classList.contains('open');
+  // Fecha todos
+  document.querySelectorAll('.diag-body').forEach(b=>b.classList.remove('open'));
+  document.querySelectorAll('.diag-arrow').forEach(a=>a.classList.remove('open'));
+  // Abre esse se estava fechado
+  if(!isOpen) {
+    body.classList.add('open');
+    arrow.classList.add('open');
+    setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'start'}), 100);
+  }
+}
+function copiar(el, texto) {
+  if(navigator.clipboard) navigator.clipboard.writeText(texto);
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2000);
+}
+</script>
+</body>
+</html>
