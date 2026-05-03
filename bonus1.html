@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bônus 1 – Roteiro de Comunicação · SOS Birras</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#E8341A;--navy:#1A1F3C;--gold:#F5A623;--green:#2D9E6B;--purple:#6B4EFF;--pink:#E8348A;--soft:#F4F4F8}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:var(--soft);color:#2C2C2C;line-height:1.65}
+
+  /* HERO */
+  .hero{background:linear-gradient(145deg,#1A1F3C,#2D1B69);padding:52px 24px 36px;text-align:center}
+  .badge{display:inline-block;background:rgba(245,166,35,0.2);color:var(--gold);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(245,166,35,0.3)}
+  .hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(26px,7vw,38px);color:white;line-height:1.15;margin-bottom:12px}
+  .hero h1 em{color:var(--gold);font-style:normal}
+  .hero p{color:rgba(255,255,255,0.72);font-size:14px;max-width:300px;margin:0 auto}
+
+  /* INTRO */
+  .intro{margin:16px;background:white;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(26,31,60,0.07)}
+  .intro-icon{font-size:32px;margin-bottom:10px}
+  .intro h3{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--navy);margin-bottom:10px}
+  .intro p{font-size:14px;color:#555;line-height:1.6;margin-bottom:8px}
+  .intro p:last-child{margin-bottom:0}
+  .intro strong{color:var(--navy)}
+  .diferencial{background:linear-gradient(135deg,#FFF8EC,#FEF0F6);border-radius:12px;padding:14px;margin-top:12px;border-left:3px solid var(--gold)}
+  .diferencial p{font-size:13px;color:#555;margin:0}
+  .diferencial strong{color:var(--navy)}
+
+  /* SITUAÇÃO */
+  .sit-card{margin:12px 16px;background:white;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(26,31,60,0.08)}
+  .sit-header{padding:16px 18px;display:flex;align-items:center;gap:13px}
+  .sit-header.red{background:#FFF0ED}
+  .sit-header.gold{background:#FFF8EC}
+  .sit-header.green{background:#F0FAF5}
+  .sit-header.blue{background:#EEF0FA}
+  .sit-header.pink{background:#FEF0F6}
+  .sit-emoji{font-size:28px}
+  .sit-info h3{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:2px}
+  .sit-info p{font-size:12px;color:#888}
+  .sit-body{padding:18px}
+
+  /* FRASE */
+  .frase-bloco{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid #F0F0F5}
+  .frase-bloco:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .frase-num{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:8px}
+  .frase-num span{background:#F0F0F5;border-radius:20px;padding:2px 8px}
+  .frase-box{background:#F8F8FF;border-radius:12px;padding:14px 46px 14px 16px;font-size:15px;font-weight:600;color:var(--navy);border-left:4px solid var(--green);cursor:pointer;position:relative;transition:transform 0.15s;margin-bottom:10px;line-height:1.5}
+  .frase-box:active{transform:scale(0.97)}
+  .copy-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:var(--green);color:white;border:none;border-radius:8px;padding:4px 8px;font-size:11px;cursor:pointer;font-weight:600}
+  .porque{background:#F0FAF5;border-radius:10px;padding:12px 14px;margin-bottom:8px}
+  .porque-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:4px}
+  .porque p{font-size:13px;color:#444;line-height:1.5;margin:0}
+  .quando{background:#EEF0FA;border-radius:10px;padding:12px 14px}
+  .quando-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--purple);margin-bottom:4px}
+  .quando p{font-size:13px;color:#444;line-height:1.5;margin:0}
+
+  /* EVITE */
+  .evite-section{background:#FFF0ED;border-radius:14px;padding:16px;margin-top:6px}
+  .evite-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--red);margin-bottom:12px}
+  .evite-item{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(232,52,26,0.1)}
+  .evite-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+  .evite-frase{font-size:14px;color:#444;margin-bottom:4px;font-style:italic}
+  .evite-frase::before{content:'✗ ';color:var(--red);font-weight:700;font-style:normal}
+  .evite-porq{font-size:12px;color:#888;line-height:1.4;padding-left:16px}
+
+  /* MANTRA */
+  .mantra{margin:16px;background:linear-gradient(135deg,var(--navy),#2D1B69);border-radius:16px;padding:24px 20px;text-align:center}
+  .mantra p{font-family:'Fraunces',serif;font-style:italic;font-size:17px;color:white;line-height:1.5}
+  .mantra span{color:var(--gold)}
+
+  /* CTA */
+  .cta-box{margin:16px 16px 32px;background:linear-gradient(135deg,#1A1F3C,#2D1B69);border-radius:18px;padding:24px 20px;text-align:center}
+  .cta-box .icon{font-size:28px;margin-bottom:10px}
+  .cta-box h3{font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:white;margin-bottom:8px}
+  .cta-box p{font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:20px;line-height:1.6}
+  .cta-box a{display:inline-block;background:#F5A623;color:#1A1F3C;font-family:'Fraunces',serif;font-weight:700;font-size:16px;padding:14px 28px;border-radius:12px;text-decoration:none}
+
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--navy);color:white;padding:10px 22px;border-radius:30px;font-size:13px;font-weight:500;z-index:9999;transition:transform 0.3s;white-space:nowrap;opacity:0}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  .pb{padding-bottom:20px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">🎁 Bônus 1</div>
+  <h1>Roteiro Completo<br>de <em>Comunicação</em></h1>
+  <p>Não só o que dizer — mas por que cada frase funciona no cérebro da criança</p>
+</div>
+
+<div class="intro">
+  <div class="intro-icon">🧠</div>
+  <h3>A diferença entre reagir e responder</h3>
+  <p>No guia SOS você tem as frases de emergência — rápidas, diretas, para usar na hora H.</p>
+  <p>Aqui você vai <strong>entender a lógica por trás de cada palavra</strong>. O que acontece no cérebro da criança quando você valida, quando você redireciona, e por que algumas frases aparentemente inofensivas pioram tudo.</p>
+  <div class="diferencial">
+    <p>💡 <strong>Com esse entendimento</strong>, você para de depender de frases prontas e começa a criar as suas próprias — porque entende o princípio, não só a técnica.</p>
+  </div>
+</div>
+
+<!-- SITUAÇÃO 1 -->
+<div class="sit-card">
+  <div class="sit-header red">
+    <span class="sit-emoji">🛒</span>
+    <div class="sit-info"><h3>No Supermercado</h3><p>Quer algo que não pode ter</p></div>
+  </div>
+  <div class="sit-body">
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 1</span> Para validar</div>
+      <div class="frase-box" onclick="copiar(this,'Eu vejo que você quer muito isso. Deve ser difícil quando não podemos ter o que queremos.')">
+        "Eu vejo que você quer muito isso. Deve ser difícil quando não podemos ter o que queremos."
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>Nomear a emoção ativa o córtex pré-frontal — a parte racional do cérebro. A criança se sente <strong>vista</strong>, e isso por si só já reduz a intensidade da birra.</p></div>
+      <div class="quando"><div class="quando-label">⏱ Quando usar</div><p>Assim que a birra começa — antes de qualquer redirecionamento. Validar primeiro é o passo que a maioria pula.</p></div>
+    </div>
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 2</span> Para redirecionar</div>
+      <div class="frase-box" onclick="copiar(this,'Vamos colocar na nossa lista de desejos? Assim não esquecemos.')">
+        "Vamos colocar na nossa lista de desejos? Assim não esquecemos."
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>Dá uma saída digna — não é um "não" definitivo, é um "ainda não". O cérebro infantil aceita muito melhor quando percebe que não perdeu, só adiou.</p></div>
+    </div>
+    <div class="evite-section">
+      <div class="evite-title">⚠️ Evite nessa situação</div>
+      <div class="evite-item">
+        <div class="evite-frase">"Para de fazer birra"</div>
+        <div class="evite-porq">Diz o que não fazer, mas não ensina o que fazer. A criança não sabe como regular a emoção — ela precisa ser ensinada, não mandada.</div>
+      </div>
+      <div class="evite-item">
+        <div class="evite-frase">"Todo mundo está olhando"</div>
+        <div class="evite-porq">Adiciona vergonha — uma emoção que a criança não consegue processar e que intensifica ainda mais a birra.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SITUAÇÃO 2 -->
+<div class="sit-card">
+  <div class="sit-header gold">
+    <span class="sit-emoji">🚪</span>
+    <div class="sit-info"><h3>Quando não quer sair</h3><p>Parquinho, shopping, visita…</p></div>
+  </div>
+  <div class="sit-body">
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 1</span> Aviso prévio</div>
+      <div class="frase-box" onclick="copiar(this,'Daqui a 5 minutinhos vamos precisar ir embora. Você consegue aproveitar bem esse tempo?')">
+        "Daqui a 5 minutinhos vamos precisar ir embora. Você consegue aproveitar bem esse tempo?"
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>Crianças não têm noção de tempo — o aviso prévio prepara o sistema nervoso para a transição <strong>antes</strong> de ela acontecer. Reduz o choque e quase elimina a birra.</p></div>
+      <div class="quando"><div class="quando-label">⏱ Quando usar</div><p>5 minutos antes de precisar sair. Se possível, repita com 2 minutos também.</p></div>
+    </div>
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 2</span> Ritual de saída</div>
+      <div class="frase-box" onclick="copiar(this,'Vamos dar tchau para o parquinho? Você quer acenar ou mandar beijinho?')">
+        "Vamos dar tchau para o parquinho? Você quer acenar ou mandar beijinho?"
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>A escolha entre A ou B devolve o senso de controle. Ela sai do modo reativo e entra no modo participativo — e se distrai com a escolha em vez de focar na saída.</p></div>
+    </div>
+    <div class="evite-section">
+      <div class="evite-title">⚠️ Evite nessa situação</div>
+      <div class="evite-item">
+        <div class="evite-frase">"Vamos embora JÁ!"</div>
+        <div class="evite-porq">Sem aviso, o sistema nervoso entra em modo de alarme. A birra é quase garantida — não por teimosia, mas por sobrecarga neurológica.</div>
+      </div>
+      <div class="evite-item">
+        <div class="evite-frase">"Se não vier agora nunca mais volto aqui"</div>
+        <div class="evite-porq">Ameaças que não serão cumpridas ensinam a criança a não levar seus limites a sério no futuro.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SITUAÇÃO 3 -->
+<div class="sit-card">
+  <div class="sit-header green">
+    <span class="sit-emoji">😰</span>
+    <div class="sit-info"><h3>Medo e ansiedade</h3><p>Médico, lugar novo, situação desconhecida</p></div>
+  </div>
+  <div class="sit-body">
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 1</span> Validar o medo</div>
+      <div class="frase-box" onclick="copiar(this,'É normal ter medo. Até eu fico nervosa às vezes. Vamos passar por isso juntos.')">
+        "É normal ter medo. Até eu fico nervosa às vezes. Vamos passar por isso juntos."
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>Quando você admite sua própria vulnerabilidade, a criança se sente menos sozinha. Seu sistema nervoso começa a se regular <strong>espelhando o seu</strong> — isso se chama corregulação.</p></div>
+    </div>
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 2</span> Dar controle</div>
+      <div class="frase-box" onclick="copiar(this,'Você quer que eu fique do seu lado direito ou esquerdo?')">
+        "Você quer que eu fique do seu lado direito ou esquerdo?"
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>Uma pequena escolha numa situação de controle zero reduz o pânico imediatamente. O cérebro sai do modo "ameaça" quando percebe que tem algum poder.</p></div>
+    </div>
+    <div class="evite-section">
+      <div class="evite-title">⚠️ Evite nessa situação</div>
+      <div class="evite-item">
+        <div class="evite-frase">"Não tem nada demais, é só uma picadinha"</div>
+        <div class="evite-porq">Minimizar o medo ensina que as emoções dela não são válidas — o oposto do que queremos construir.</div>
+      </div>
+      <div class="evite-item">
+        <div class="evite-frase">"Não chora, você é grandinho"</div>
+        <div class="evite-porq">Conecta emoção à fraqueza. Ela aprende a esconder sentimentos, não a processá-los.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SITUAÇÃO 4 -->
+<div class="sit-card">
+  <div class="sit-header blue">
+    <span class="sit-emoji">🌍</span>
+    <div class="sit-info"><h3>Fora da rotina</h3><p>Visitas, viagens, lugares novos</p></div>
+  </div>
+  <div class="sit-body">
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 1</span> Antes de sair</div>
+      <div class="frase-box" onclick="copiar(this,'Hoje vamos visitar a tia Ana. Vai ter outras crianças e a gente volta antes do jantar.')">
+        "Hoje vamos visitar a tia Ana. Vai ter outras crianças e a gente volta antes do jantar."
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>Antecipar o que vai acontecer cria uma "âncora" mental. A criança chega ao lugar com o cérebro <strong>preparado</strong>, não em modo de surpresa e alarme.</p></div>
+    </div>
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 2</span> Durante a birra</div>
+      <div class="frase-box" onclick="copiar(this,'Eu sei que é muita coisa nova de uma vez. Vamos dar uma pausinha juntos?')">
+        "Eu sei que é muita coisa nova de uma vez. Vamos dar uma pausinha juntos?"
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>Nomeia o motivo real — sobrecarga sensorial — sem culpar a criança. Ela se sente compreendida, não punida.</p></div>
+    </div>
+    <div class="evite-section">
+      <div class="evite-title">⚠️ Evite nessa situação</div>
+      <div class="evite-item">
+        <div class="evite-frase">"Você está sendo difícil"</div>
+        <div class="evite-porq">Ela não está sendo difícil — está fora do ambiente seguro dela. Rotular piora a autoimagem e não resolve nada.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SITUAÇÃO 5 -->
+<div class="sit-card pb">
+  <div class="sit-header pink">
+    <span class="sit-emoji">👵</span>
+    <div class="sit-info"><h3>Com a família por perto</h3><p>Quando outros querem interferir</p></div>
+  </div>
+  <div class="sit-body">
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 1</span> Para a criança</div>
+      <div class="frase-box" onclick="copiar(this,'Eu sei que está difícil agora. Vamos para um lugar mais calmo e conversar?')">
+        "Eu sei que está difícil agora. Vamos para um lugar mais calmo e conversar?"
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">🧠 Por que funciona</div><p>Tira a criança do palco. Longe da audiência, o sistema nervoso de vocês duas se regula muito mais rápido.</p></div>
+    </div>
+    <div class="frase-bloco">
+      <div class="frase-num"><span>Frase 2</span> Para os familiares</div>
+      <div class="frase-box" onclick="copiar(this,'Obrigada pela preocupação. Eu estou cuidando disso do meu jeito.')">
+        "Obrigada pela preocupação. Eu estou cuidando disso do meu jeito."
+        <button class="copy-btn">copiar</button>
+      </div>
+      <div class="porque"><div class="porque-label">💪 Por que funciona</div><p>Curta, respeitosa e firme. Não abre debate, não gera conflito, mas deixa claro quem está no comando.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="mantra">
+  <p>"Você não precisa ter a frase perfeita.<br><span>Você só precisa estar presente.</span>"</p>
+</div>
+
+<div class="cta-box">
+  <div class="icon">🌱</div>
+  <h3>Gostou de entender o porquê?</h3>
+  <p>No curso <strong style="color:var(--gold)">Transformação 21 Dias</strong> você aprende o método completo — não só para birras, mas para construir uma relação mais leve com seu filho todos os dias.</p>
+  <a href="#">Quero conhecer →</a>
+</div>
+
+<div class="toast" id="toast">✅ Frase copiada!</div>
+
+<script>
+function copiar(el, texto) {
+  if(navigator.clipboard) navigator.clipboard.writeText(texto);
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2000);
+}
+</script>
+</body>
+</html>
